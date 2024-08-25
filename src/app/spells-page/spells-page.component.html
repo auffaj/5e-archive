@@ -1,0 +1,7 @@
+<div>
+    <input (input)="filterSearched($event)" type="text" placeholder="Search Title..."/>
+</div>
+
+<div *ngFor="let spell of spells">
+    <app-spell-card [data]="spell"></app-spell-card>
+</div>
