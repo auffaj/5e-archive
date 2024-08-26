@@ -1,20 +1,26 @@
-<h1>{{title}}</h1>
-<mat-accordion>
-    <mat-expansion-panel hideToggle>
-      <mat-expansion-panel-header>
-        <mat-panel-title> Spells </mat-panel-title>
-        <mat-panel-description> Spell Lookup </mat-panel-description>
-      </mat-expansion-panel-header>
-      <fiveE-archive-spells-page></fiveE-archive-spells-page>
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title> Equipment </mat-panel-title>
-        <mat-panel-description>
-          Equipment Lookup
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <fiveE-archive-equips-page></fiveE-archive-equips-page>
-    </mat-expansion-panel>
-  </mat-accordion>
-  
+<div class="body-container">
+    <h4>{{title}}</h4>
+
+    <mat-accordion [multi]="true">
+        <!-- Spells -->
+        <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title> Spells </mat-panel-title>
+            <mat-panel-description> Spell Lookup </mat-panel-description>
+        </mat-expansion-panel-header>
+        <fiveE-archive-spells-page></fiveE-archive-spells-page>
+        </mat-expansion-panel>
+
+        <!-- Equipment -->
+        <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title> Equipment </mat-panel-title>
+            <mat-panel-description>
+            Equipment Lookup
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <fiveE-archive-equips-page></fiveE-archive-equips-page>
+        </mat-expansion-panel>
+    </mat-accordion>
+    
+</div>

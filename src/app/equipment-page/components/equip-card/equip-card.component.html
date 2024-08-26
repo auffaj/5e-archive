@@ -1,31 +1,33 @@
 <div class="container">
-    <h3 class="title" (click)="showDescription = !showDescription">{{data.name}}</h3>
-    <div *ngIf="showDescription">
-        <p>
-            <label>Name: </label>
-            <span>{{data.name}}</span>
-        </p>
-        <p>
-            <label>Casting Time: </label>
-            <span>{{data.category}}</span>
-        </p>
-        <p>
-            <label>Range/Area: </label>
-            <span>{{data.cost}}</span>
-        </p>
-        <p>
-            <label>Components: </label>
-            <span>{{data.damage}}</span>
-        </p>
-        <p>
-            <label>Duration: </label>
-            <span>{{data.notes}}</span>
-        </p>
-        <p>
-            <label>School: </label>
-            <span>{{data.weight}}</span>
-        </p>
-        
-        <p class="description">{{data.description}}</p>
-    </div>
+
+    <mat-accordion>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title> {{data.name}} </mat-panel-title>
+                <mat-panel-description> {{data.notes}} </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>
+                <label>Name: </label>
+                <span>{{data.name}}</span>
+            </p>
+            <p>
+                <label>Category: </label>
+                <span>{{data.category}}</span>
+            </p>
+            <p>
+                <label>Cost: </label>
+                <span>{{data.cost}}</span>
+            </p>
+            <p>
+                <label>Damage: </label>
+                <span>{{data.damage}}</span>
+            </p>
+            <p>
+                <label>Weight: </label>
+                <span>{{data.weight}}</span>
+            </p>
+            
+            <p class="description">{{data.description}}</p>
+        </mat-expansion-panel>
+    </mat-accordion>
 </div>
