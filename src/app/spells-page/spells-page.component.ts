@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Spell } from './spell';
 import { CommonModule } from '@angular/common';
 import { SpellCardComponent } from './components/spell-card/spell-card.component';
-import data from '../../data/spells.json'
+import data from '../../assets/spells.json'
 
 @Component({
   selector: 'fiveE-archive-spells-page',

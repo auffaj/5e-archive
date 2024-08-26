@@ -2,66 +2,30 @@
     <h3 class="title" (click)="showDescription = !showDescription">{{data.name}}</h3>
     <div *ngIf="showDescription">
         <p>
-            <label>Level: </label>
-            <span>{{data.level}}</span>
+            <label>Name: </label>
+            <span>{{data.name}}</span>
         </p>
         <p>
             <label>Casting Time: </label>
-            <span>{{data.casting_time}}</span>
+            <span>{{data.category}}</span>
         </p>
         <p>
             <label>Range/Area: </label>
-            <span>{{data.range_area}}</span>
+            <span>{{data.cost}}</span>
         </p>
         <p>
             <label>Components: </label>
-            <span>{{data.components}}</span>
+            <span>{{data.damage}}</span>
         </p>
         <p>
             <label>Duration: </label>
-            <span>{{data.duration}}</span>
+            <span>{{data.notes}}</span>
         </p>
         <p>
             <label>School: </label>
-            <span>{{data.school}}</span>
-        </p>
-        <p>
-            <label>Attack/Save: </label>
-            <span>{{data.attack_save}}</span>
-        </p>
-        <p>
-            <label>Description: </label>
-            <span>{{data.description}}</span>
-        </p>
-        <p>
-            <label>Tags: </label>
-            <span>{{data.tags}}</span>
-        </p>
-        <p>
-            <label>Classes: </label>
-            <span>{{data.classes}}</span>
+            <span>{{data.weight}}</span>
         </p>
         
-        <p>
-            <label>Banned: </label>
-            <span>{{data.banned}}</span>
-        </p>
-        <p>
-            <label>Concentration: </label>
-            <span>{{data.concentration}}</span>
-        </p>
-        <p>
-            <label>Ritual: </label>
-            <span>{{data.ritual}}</span>
-        </p>
-        <p>
-            <label>Materials: </label>
-            <span>{{data.materials}}</span>
-        </p>
-        <p>
-            <label>Sourcebook: </label>
-            <span>{{data.sourcebook}}</span>
-        </p>
         <p class="description">{{data.description}}</p>
     </div>
 </div>
