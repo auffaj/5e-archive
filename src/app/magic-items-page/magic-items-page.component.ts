@@ -18,7 +18,7 @@ export class MagicItemsPageComponent implements OnInit {
   private pristineCopy: MagicItem[];
 
   ngOnInit(){
-    this.http.get('assets/spells.json', {responseType: 'json'})
+    this.http.get('assets/magic_items.json', {responseType: 'json'})
     .subscribe(data => {
       this.pristineCopy = JSON.parse(JSON.stringify(data));
       this.setShownMagicItems(data as MagicItem[]);
