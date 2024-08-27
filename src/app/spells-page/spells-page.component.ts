@@ -2,20 +2,29 @@ import { Component, OnInit } from '@angular/core';
 import { Spell } from './spell';
 import { CommonModule } from '@angular/common';
 import { SpellCardComponent } from './components/spell-card/spell-card.component';
-import data from '../../assets/spells.json'
+import { HttpClient } from '@angular/common/http';
+//import data from '../../../public/assets/spells.json'
 
 @Component({
   selector: 'fiveE-archive-spells-page',
   standalone: true,
   imports: [CommonModule, SpellCardComponent],
+  providers:[HttpClient],
   templateUrl: './spells-page.component.html',
   styleUrl: './spells-page.component.scss'
 })
 export class SpellsPageComponent implements OnInit {
+  constructor(private http: HttpClient){}
   public spells: Spell[]
+  private pristineSpells: Spell[]
 
   ngOnInit(){
-     this.setShownSpells(data);
+    this.http.get('assets/spells.json', {responseType: 'json'})
+        .subscribe(data => {
+          this.pristineSpells = JSON.parse(JSON.stringify(data));
+          this.setShownSpells(data as Spell[]);
+        });
+     
   }
 
   setShownSpells(_data_: Spell[]){
@@ -27,9 +36,9 @@ export class SpellsPageComponent implements OnInit {
     const searchTerm: string = (event.target as HTMLInputElement).value.toLowerCase();
 
     if(searchTerm == ''){
-      this.setShownSpells(data);
+      this.setShownSpells(this.pristineSpells);
     } else {
-      const newSpells = data.filter(row => row.name.toLowerCase().indexOf(searchTerm) >= 0)
+      const newSpells = this.pristineSpells.filter(row => row.name.toLowerCase().indexOf(searchTerm) >= 0)
       this.setShownSpells(newSpells);
     }
   }

@@ -1,0 +1,7 @@
+<div>
+    <input (input)="filterSearched($event)" type="text" placeholder="Search Title..."/>
+</div>
+
+<div *ngFor="let magic_item of magic_items">
+    <app-magic-item-card [data]="magic_item"></app-magic-item-card>
+</div>

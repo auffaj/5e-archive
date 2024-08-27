@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Equip } from './equip';
 import { CommonModule } from '@angular/common';
 import { EquipCardComponent } from './components/equip-card/equip-card.component';
-import data from '../../assets/equipment.json'
+import { HttpClient } from '@angular/common/http';
+//import data from '../../../public/assets/equipment.json'
 
 @Component({
   selector: 'fiveE-archive-equips-page',
@@ -12,10 +13,16 @@ import data from '../../assets/equipment.json'
   styleUrl: './equip-page.component.scss'
 })
 export class EquipsPageComponent implements OnInit {
+  constructor(private http: HttpClient){}
   public equips: Equip[]
+  private pristineCopy: Equip[];
 
   ngOnInit(){
-     this.setShownEquips(data);
+    this.http.get('assets/equipment.json', {responseType: 'json'})
+    .subscribe(data => {
+      this.pristineCopy = JSON.parse(JSON.stringify(data));
+      this.setShownEquips(data as Equip[]);
+  });
   }
 
   setShownEquips(_data_: Equip[]){
@@ -27,9 +34,9 @@ export class EquipsPageComponent implements OnInit {
     const searchTerm: string = (event.target as HTMLInputElement).value.toLowerCase();
 
     if(searchTerm == ''){
-      this.setShownEquips(data);
+      this.setShownEquips(this.pristineCopy);
     } else {
-      const newEquips = data.filter(row => row.name.toLowerCase().indexOf(searchTerm) >= 0)
+      const newEquips = this.pristineCopy.filter(row => row.name.toLowerCase().indexOf(searchTerm) >= 0)
       this.setShownEquips(newEquips);
     }
   }

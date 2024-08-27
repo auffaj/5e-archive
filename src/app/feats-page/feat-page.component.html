@@ -1,0 +1,7 @@
+<div>
+    <input (input)="filterSearched($event)" type="text" placeholder="Search Title..."/>
+</div>
+
+<div *ngFor="let feat of feats">
+    <app-feat-card [data]="feat"></app-feat-card>
+</div>

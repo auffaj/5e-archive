@@ -3,12 +3,20 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { SpellsPageComponent } from './spells-page/spells-page.component';
 import { EquipsPageComponent } from "./equipment-page/equip-page.component";
+import { MagicItemsPageComponent } from './magic-items-page/magic-items-page.component';
 import { MatExpansionModule } from "@angular/material/expansion"
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, SpellsPageComponent, CommonModule, EquipsPageComponent, MatExpansionModule],
+  imports: [RouterOutlet,
+            CommonModule,
+            MatExpansionModule,
+            
+            SpellsPageComponent,
+            MagicItemsPageComponent,
+            EquipsPageComponent
+            ],
   providers:[CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
