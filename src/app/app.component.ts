@@ -5,6 +5,7 @@ import { SpellsPageComponent } from './spells-page/spells-page.component';
 import { EquipsPageComponent } from "./equipment-page/equip-page.component";
 import { MagicItemsPageComponent } from './magic-items-page/magic-items-page.component';
 import { MatExpansionModule } from "@angular/material/expansion"
+import { FeatsPageComponent } from './feats-page/feat-page.component';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ import { MatExpansionModule } from "@angular/material/expansion"
             
             SpellsPageComponent,
             MagicItemsPageComponent,
-            EquipsPageComponent
+            EquipsPageComponent,
+            FeatsPageComponent
             ],
   providers:[CommonModule],
   templateUrl: './app.component.html',
