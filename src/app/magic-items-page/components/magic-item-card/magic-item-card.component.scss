@@ -21,5 +21,16 @@
         margin-top: 25px;
         padding: 25px;
         border: 1px solid lightgray;
+
+        .upper-description, .lower-description, .main-description{
+            display: block;
+        }
+
+        .upper-description{
+            margin-bottom: 10px;
+        }
+        .lower-description{
+            margin-top: 10px;
+        }
     }
 }

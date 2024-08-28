@@ -5,22 +5,21 @@
                 <mat-panel-title> {{data.name}} </mat-panel-title>
             </mat-expansion-panel-header>
             <p>
-                <label>Level: </label>
+                <label>Effect:</label>
                 <span>{{data.effect}}</span>
             </p>
             <p>
-                <label>Casting Time: </label>
                 <span>{{data.prerequisite}}</span>
             </p>
+            
+            <p class="description">{{data.description}}</p>
             <p>
-                <label>Range/Area: </label>
                 <span>{{data.sourcebook}}</span>
             </p>
             <p>
-                <label>Components: </label>
+                <label>Tags:</label>
                 <span>{{data.tags}}</span>
             </p>
-            <p class="description">{{data.description}}</p>
         </mat-expansion-panel>
     </mat-accordion>
 </div>
