@@ -14,8 +14,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MagicItemsPageComponent implements OnInit {
   constructor(private http: HttpClient){}
-  public magic_items: MagicItem[]
-  private pristineCopy: MagicItem[];
+  public magic_items: MagicItem[] = []
+  private pristineCopy: MagicItem[] = [];
+
+  private debounce: any = null;
 
   ngOnInit(){
     this.http.get('assets/magic_items.json', {responseType: 'json'})
@@ -33,6 +35,15 @@ export class MagicItemsPageComponent implements OnInit {
 
     const searchTerm: string = (event.target as HTMLInputElement).value.toLowerCase();
 
+    // manual debounce function
+    if(this.debounce != null){
+      clearTimeout(this.debounce);
+    }
+
+    this.debounce = setTimeout(() => this.doFilterSearch(searchTerm), 500);
+  }
+
+  private doFilterSearch(searchTerm: string){
     if(searchTerm == ''){
       this.setShownMagicItems(this.pristineCopy);
     } else {
