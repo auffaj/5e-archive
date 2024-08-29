@@ -3,11 +3,12 @@ import { Feat } from './feat';
 import { CommonModule } from '@angular/common';
 import { FeatCardComponent } from './components/feat-card/feat-card.component';
 import { HttpClient } from '@angular/common/http';
+import { CardContainerComponent } from '../shared/card-container/card-container.component';
 
 @Component({
   selector: 'fiveE-archive-feats-page',
   standalone: true,
-  imports: [CommonModule, FeatCardComponent],
+  imports: [CommonModule, FeatCardComponent, CardContainerComponent],
   templateUrl: './feat-page.component.html',
   styleUrl: './feat-page.component.scss'
 })

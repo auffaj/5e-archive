@@ -4,7 +4,7 @@ import { NgIf } from '@angular/common';
 import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
-  selector: 'app-feat-card',
+  selector: 'fiveE-archive-feat-card',
   standalone: true,
   imports: [NgIf, MatExpansionModule],
   templateUrl: './feat-card.component.html',

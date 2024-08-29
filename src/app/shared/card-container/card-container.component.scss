@@ -1,0 +1,35 @@
+.example-container {
+    width: 99%;
+    max-height: 300px;
+    border-radius: 15px;
+    height: 100%;
+  }
+  
+  .example-sidenav-content {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+  
+  .example-sidenav {
+    padding: 20px;
+  }
+
+  .description{
+    background-color: rgb(225, 225, 225);
+    border: 1px solid lightgray;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    min-height: 60%;
+}
+
+.button-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}

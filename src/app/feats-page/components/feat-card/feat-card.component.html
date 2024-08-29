@@ -1,25 +1,10 @@
 <div class="container">
-    <mat-accordion>
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title> {{data.name}} </mat-panel-title>
-            </mat-expansion-panel-header>
-            <p>
-                <label>Effect:</label>
-                <span>{{data.effect}}</span>
-            </p>
-            <p>
-                <span>{{data.prerequisite}}</span>
-            </p>
-            
-            <p class="description">{{data.description}}</p>
-            <p>
-                <span>{{data.sourcebook}}</span>
-            </p>
-            <p>
-                <label>Tags:</label>
-                <span>{{data.tags}}</span>
-            </p>
-        </mat-expansion-panel>
-    </mat-accordion>
+    <h4> {{data.name}} </h4>
+    <p>
+        <label>Effect:</label>
+        <span>{{data.effect}}</span>
+    </p>
+    <p>
+        <span>{{data.prerequisite}}</span>
+    </p>
 </div>

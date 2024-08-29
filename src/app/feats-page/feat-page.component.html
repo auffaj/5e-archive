@@ -2,6 +2,11 @@
     <input (input)="filterSearched($event)" type="text" placeholder="Search Title..."/>
 </div>
 
-<div *ngFor="let feat of feats">
-    <app-feat-card [data]="feat"></app-feat-card>
+<div class="feat-card-container" *ngFor="let feat of feats">
+    <fiveE-archive-card-container
+        [description]="feat.description"
+        [tags]="feat.tags"
+        [sourcebook]="feat.sourcebook">
+        <fiveE-archive-feat-card [data]="feat"></fiveE-archive-feat-card>
+    </fiveE-archive-card-container>
 </div>
