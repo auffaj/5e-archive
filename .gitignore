@@ -41,3 +41,4 @@ testem.log
 Thumbs.db
 public/assets/classes/
 docs/assets/classes/
+docs/browser/
