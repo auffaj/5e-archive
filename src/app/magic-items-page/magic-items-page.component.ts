@@ -3,14 +3,12 @@ import { MagicItem } from './magic-item';
 import { CommonModule } from '@angular/common';
 import { MagicItemCardComponent } from './components/magic-item-card/magic-item-card.component';
 import { HttpClient } from '@angular/common/http';
-import {ScrollingModule} from '@angular/cdk/scrolling';
-import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling'; 
+import { CardContainerComponent } from '../shared/card-container/card-container.component';
 
 @Component({
   selector: 'fiveE-archive-magic-items-page',
   standalone: true,
-  imports: [CommonModule, MagicItemCardComponent, ScrollingModule],
-  providers:[CdkVirtualScrollViewport],
+  imports: [CommonModule, MagicItemCardComponent, CardContainerComponent],
   templateUrl: './magic-items-page.component.html',
   styleUrl:    './magic-items-page.component.scss'
 })

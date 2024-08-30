@@ -16,9 +16,9 @@ import { NgIf } from '@angular/common';
   imports: [MatSidenavModule, MatButtonModule,MatIconModule,NgIf]
 })
 export class CardContainerComponent {
-  @Input() description: string = "";
-  @Input() tags: string[] | string = "";
-  @Input() sourcebook: string = "";
+  @Input() description: string | null = null;
+  @Input() tags: string[] | string | null = null;
+  @Input() sourcebook: string | null = null;
 
   public currentSubject: string | null = null;
   public title: string | null = null;
@@ -41,11 +41,11 @@ export class CardContainerComponent {
   getDrawerContent(): {title: string | null, body: string | null}{
     switch(this.currentSubject){
       case("description"): 
-          return {title: null, body: this.description};
+        return {title: null, body: this.description == null ? "" : this.description};
       case("tags"): 
-        return {title: "Tags:", body: this.tags.toString()};
+        return {title: "Tags:", body: this.tags == null ? "" : this.tags.toString()};
       case("sourcebook"):
-        return {title: "Source Book", body: this.sourcebook};
+        return {title: "Source Book", body: this.sourcebook == null ? "" : this.sourcebook};
       default: 
         return {title: null, body: null};
     }

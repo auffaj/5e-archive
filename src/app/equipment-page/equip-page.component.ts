@@ -3,19 +3,19 @@ import { Equip } from './equip';
 import { CommonModule } from '@angular/common';
 import { EquipCardComponent } from './components/equip-card/equip-card.component';
 import { HttpClient } from '@angular/common/http';
-//import data from '../../../public/assets/equipment.json'
+import { CardContainerComponent } from '../shared/card-container/card-container.component';
 
 @Component({
   selector: 'fiveE-archive-equips-page',
   standalone: true,
-  imports: [CommonModule, EquipCardComponent],
+  imports: [CommonModule, EquipCardComponent,CardContainerComponent],
   templateUrl: './equip-page.component.html',
   styleUrl: './equip-page.component.scss'
 })
 export class EquipsPageComponent implements OnInit {
   constructor(private http: HttpClient){}
-  public equips: Equip[]
-  private pristineCopy: Equip[];
+  public equips: Equip[] = []
+  private pristineCopy: Equip[] = [];
 
   ngOnInit(){
     this.http.get('assets/equipment.json', {responseType: 'json'})

@@ -3,20 +3,20 @@ import { Spell } from './spell';
 import { CommonModule } from '@angular/common';
 import { SpellCardComponent } from './components/spell-card/spell-card.component';
 import { HttpClient } from '@angular/common/http';
-//import data from '../../../public/assets/spells.json'
+import { CardContainerComponent } from '../shared/card-container/card-container.component';
 
 @Component({
   selector: 'fiveE-archive-spells-page',
   standalone: true,
-  imports: [CommonModule, SpellCardComponent],
+  imports: [CommonModule, SpellCardComponent, CardContainerComponent],
   providers:[HttpClient],
   templateUrl: './spells-page.component.html',
   styleUrl: './spells-page.component.scss'
 })
 export class SpellsPageComponent implements OnInit {
   constructor(private http: HttpClient){}
-  public spells: Spell[]
-  private pristineSpells: Spell[]
+  public spells: Spell[] = []
+  private pristineSpells: Spell[] = []
 
   ngOnInit(){
     this.http.get('assets/spells.json', {responseType: 'json'})
