@@ -1,34 +1,15 @@
 <div class="container">
-    <mat-accordion>
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title> {{data.name}} </mat-panel-title>
-            </mat-expansion-panel-header>
-            <p>
-                <label>Rarity: </label>
-                <span>{{data.rarity}}</span>
-            </p>
-            <p>
-                <label>Attunement: </label>
-                <span>{{data.attunement}}</span>
-            </p>
-            <p>
-                <label>Type: </label>
-                <span>{{data.type}}</span>
-            </p>
-            <p class="description">
-                <span class="upper-description">{{data.upperDescription}}</span>
-                <span class="main-description">{{data.mainDescription}}</span>
-                <span class="lower-description">{{data.lowerDescription}}</span>
-            </p>
-            <p>
-                <label>Description: </label>
-                <span>{{data.sourcebook}}</span>
-            </p>
-            <p>
-                <label>Tags: </label>
-                <span>{{data.footerTags}}</span>
-            </p>
-        </mat-expansion-panel>
-    </mat-accordion>
+    <h4> {{data.name}} </h4>
+    <p>
+        <label>Rarity: </label>
+        <span>{{data.rarity}}</span>
+    </p>
+    <p>
+        <label>Attunement: </label>
+        <span>{{data.attunement}}</span>
+    </p>
+    <p>
+        <label>Type: </label>
+        <span>{{data.type}}</span>
+    </p>
 </div>

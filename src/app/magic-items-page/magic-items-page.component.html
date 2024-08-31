@@ -2,7 +2,12 @@
     <input (input)="filterSearched($event)" type="text" placeholder="Search Title..."/>
 </div>
 
-<div *ngFor="let magic_item of magic_items">
-    <app-magic-item-card [data]="magic_item"></app-magic-item-card>
+<div class="card-container" *ngFor="let magic_item of magic_items">
+    <fiveE-archive-card-container
+        [description]="[magic_item.upperDescription, magic_item.mainDescription, magic_item.lowerDescription]"
+        [tags]="magic_item.footerTags"
+        [sourcebook]="magic_item.sourcebook">
+        <app-magic-item-card [data]="magic_item"></app-magic-item-card>
+    </fiveE-archive-card-container>
 </div>
 
