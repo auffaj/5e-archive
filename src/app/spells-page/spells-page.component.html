@@ -2,6 +2,12 @@
     <input (input)="filterSearched($event)" type="text" placeholder="Search Title..."/>
 </div>
 
-<div *ngFor="let spell of spells">
-    <app-spell-card [data]="spell"></app-spell-card>
+<div class="card-container" *ngFor="let spell of spells">
+    <fiveE-archive-card-container
+        [description]="spell.description"
+        [tags]="spell.tags"
+        [sourcebook]="spell.sourcebook"
+        [classes]="spell.classes">
+        <app-spell-card [data]="spell"></app-spell-card>
+    </fiveE-archive-card-container>
 </div>

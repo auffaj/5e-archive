@@ -24,6 +24,13 @@
                     title="Sourcebook">
                 <mat-icon fontIcon="menu_book"></mat-icon>
             </button>
+            <button *ngIf="classes != null"
+                    type="button"
+                    mat-mini-fab
+                    (click)="openDrawer(drawer, 'classes')"
+                    title="Classes">
+                <mat-icon fontIcon="switch_account"></mat-icon>
+            </button>
         </div>
     </div>
 
