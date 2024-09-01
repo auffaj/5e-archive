@@ -1,5 +1,5 @@
 <div>
-    <input (input)="filterSearched($event)" type="text" placeholder="Search Title..."/>
+    <fiveE-archive-search-bar-equip (filterSubmitted)="filterSearched($event)"></fiveE-archive-search-bar-equip>
 </div>
 
 <div class="card-container" *ngFor="let equip of equips">
@@ -9,3 +9,4 @@
         <app-equip-card [data]="equip"></app-equip-card>
     </fiveE-archive-card-container>
 </div>
+    

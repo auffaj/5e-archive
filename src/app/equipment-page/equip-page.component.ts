@@ -4,24 +4,27 @@ import { CommonModule } from '@angular/common';
 import { EquipCardComponent } from './components/equip-card/equip-card.component';
 import { HttpClient } from '@angular/common/http';
 import { CardContainerComponent } from '../shared/card-container/card-container.component';
+import { SearchBarEquipComponent } from '../shared/search-bar/search-bar.component';
+import { SearchService } from '../shared/services/search/search.service';
 
 @Component({
   selector: 'fiveE-archive-equips-page',
   standalone: true,
-  imports: [CommonModule, EquipCardComponent,CardContainerComponent],
+  imports: [CommonModule, EquipCardComponent,CardContainerComponent, SearchBarEquipComponent],
   templateUrl: './equip-page.component.html',
   styleUrl: './equip-page.component.scss'
 })
 export class EquipsPageComponent implements OnInit {
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient, private search: SearchService){}
   public equips: Equip[] = []
-  private pristineCopy: Equip[] = [];
+
+  private debounce: any = null;
 
   ngOnInit(){
     this.http.get('assets/equipment.json', {responseType: 'json'})
     .subscribe(data => {
-      this.pristineCopy = JSON.parse(JSON.stringify(data));
-      this.setShownEquips(data as Equip[]);
+      this.search.setData(data);
+      this.setShownEquips(this.search.getSearchResults() as Equip[]);
   });
   }
 
@@ -29,15 +32,29 @@ export class EquipsPageComponent implements OnInit {
     this.equips = JSON.parse(JSON.stringify(_data_));
   }
 
+
   filterSearched(event: Event){
-
-    const searchTerm: string = (event.target as HTMLInputElement).value.toLowerCase();
-
-    if(searchTerm == ''){
-      this.setShownEquips(this.pristineCopy);
-    } else {
-      const newEquips = this.pristineCopy.filter(row => row.name.toLowerCase().indexOf(searchTerm) >= 0)
-      this.setShownEquips(newEquips);
+    if(this.debounce != null){
+      clearTimeout(this.debounce);
     }
+
+    this.debounce = setTimeout(() => this.doFilterSearch(event), 150);
+  }
+
+  private doFilterSearch(event: Event){
+    const nameSearchTerm: string = event.toString().toLowerCase();
+
+    const params: {searchKey: string, searchValue: any}[] = []
+
+    if(!!nameSearchTerm){
+
+      params.push({
+        searchKey:"name",
+        searchValue: nameSearchTerm
+      })
+    }
+    
+    this.debounce = null;
+    this.setShownEquips(this.search.getSearchResults(params) as Equip[]);
   }
 }

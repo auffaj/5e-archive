@@ -19,3 +19,14 @@ import { SearchBarComponent } from './search-bar.class';
 export class SearchBarMagicItemComponent extends SearchBarComponent{
   @Input() config: MagicItem = new MagicItem();
 }
+
+@Component({
+  selector: 'fiveE-archive-search-bar-equip',
+  standalone: true,
+  imports: [MatInput, MatIcon, MatFormField, MatLabel, FormsModule, NgIf],
+  templateUrl: './search-bar-equip.component.html',
+  styleUrl: './search-bar.component.scss'
+})
+export class SearchBarEquipComponent extends SearchBarComponent{
+  @Input() config: Equip = new Equip();
+}
