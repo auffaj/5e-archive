@@ -7,25 +7,15 @@ import { Feat } from '../../feats-page/feat';
 import { Equip } from '../../equipment-page/equip';
 import { Spell } from '../../spells-page/spell';
 import { NgIf } from '@angular/common';
+import { SearchBarComponent } from './search-bar.class';
 
 @Component({
-  selector: 'fiveE-archive-search-bar',
+  selector: 'fiveE-archive-search-bar-magic-item',
   standalone: true,
   imports: [MatInput, MatIcon, MatFormField, MatLabel, FormsModule, NgIf],
-  templateUrl: './search-bar.component.html',
+  templateUrl: './search-bar-magic-item.component.html',
   styleUrl: './search-bar.component.scss'
 })
-export class SearchBarComponent implements OnInit{
- @Input() config: MagicItem | Feat | Equip | Spell;
-  public name: string = "";
-
-  @Output() filterSubmitted = new EventEmitter();
-
-  ngOnInit(): void {
-      console.log(typeof(this.config), JSON.stringify(this.config) == JSON.stringify(new MagicItem()));   
-  }
-
-  submit(event: Event){
-    this.filterSubmitted.emit(event)
-  }
+export class SearchBarMagicItemComponent extends SearchBarComponent{
+  @Input() config: MagicItem = new MagicItem();
 }
