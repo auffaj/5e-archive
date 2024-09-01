@@ -1,4 +1,4 @@
-export interface MagicItem {
+export class MagicItem {
     "name": string;
     "rarity": string;
     "type": string;

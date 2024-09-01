@@ -1,4 +1,4 @@
-export interface Spell {
+export class Spell {
     "name":string;
     "level":string;
     "casting_time":string;

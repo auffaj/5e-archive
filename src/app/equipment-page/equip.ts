@@ -1,4 +1,4 @@
-export interface Equip {
+export class Equip {
     "name": string;
     "category": string;
     "cost": string;

@@ -1,4 +1,4 @@
-export interface Feat {
+export class Feat {
     "name": string;
     "sourcebook": string;
     "effect": string;
