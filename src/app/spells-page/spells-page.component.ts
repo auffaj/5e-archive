@@ -4,24 +4,26 @@ import { CommonModule } from '@angular/common';
 import { SpellCardComponent } from './components/spell-card/spell-card.component';
 import { HttpClient } from '@angular/common/http';
 import { CardContainerComponent } from '../shared/card-container/card-container.component';
+import { SearchBarSpellComponent } from '../shared/search-bar/search-bar.component';
+import { SearchService } from '../shared/services/search/search.service';
 
 @Component({
   selector: 'fiveE-archive-spells-page',
   standalone: true,
-  imports: [CommonModule, SpellCardComponent, CardContainerComponent],
+  imports: [CommonModule, SpellCardComponent, CardContainerComponent, SearchBarSpellComponent],
   providers:[HttpClient],
   templateUrl: './spells-page.component.html',
   styleUrl: './spells-page.component.scss'
 })
 export class SpellsPageComponent implements OnInit {
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient, private search: SearchService){}
   public spells: Spell[] = []
-  private pristineSpells: Spell[] = []
+  private debounce: any = null;
 
   ngOnInit(){
     this.http.get('assets/spells.json', {responseType: 'json'})
         .subscribe(data => {
-          this.pristineSpells = JSON.parse(JSON.stringify(data));
+          this.search.setData(data);
           this.setShownSpells(data as Spell[]);
         });
      
@@ -31,15 +33,31 @@ export class SpellsPageComponent implements OnInit {
     this.spells = JSON.parse(JSON.stringify(_data_));
   }
 
-  filterSearched(event: Event){
-
-    const searchTerm: string = (event.target as HTMLInputElement).value.toLowerCase();
-
-    if(searchTerm == ''){
-      this.setShownSpells(this.pristineSpells);
-    } else {
-      const newSpells = this.pristineSpells.filter(row => row.name.toLowerCase().indexOf(searchTerm) >= 0)
-      this.setShownSpells(newSpells);
+  /**
+    Queue search with debounce
+  */
+    filterSearched(event: Event){
+      if(this.debounce != null){
+        clearTimeout(this.debounce);
+      }
+  
+      this.debounce = setTimeout(() => this.doFilterSearch(event), 150);
     }
-  }
+  
+    private doFilterSearch(event: Event){
+      const nameSearchTerm: string = event.toString().toLowerCase();
+  
+      const params: {searchKey: string, searchValue: any}[] = []
+  
+      if(!!nameSearchTerm){
+  
+        params.push({
+          searchKey:"name",
+          searchValue: nameSearchTerm
+        })
+      }
+      
+      this.debounce = null;
+      this.setShownSpells(this.search.getSearchResults(params) as Spell[]);
+    }
 }

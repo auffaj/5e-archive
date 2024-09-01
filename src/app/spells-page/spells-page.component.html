@@ -1,5 +1,5 @@
 <div>
-    <input (input)="filterSearched($event)" type="text" placeholder="Search Title..."/>
+    <fiveE-archive-search-bar-spell (filterSubmitted)="filterSearched($event)"></fiveE-archive-search-bar-spell>
 </div>
 
 <div class="card-container" *ngFor="let spell of spells">
