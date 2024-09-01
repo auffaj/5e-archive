@@ -5,11 +5,12 @@ import { MagicItemCardComponent } from './components/magic-item-card/magic-item-
 import { HttpClient } from '@angular/common/http';
 import { CardContainerComponent } from '../shared/card-container/card-container.component';
 import { SearchService } from '../shared/services/search/search.service';
+import { SearchBarComponent } from '../shared/search-bar/search-bar.component';
 
 @Component({
   selector: 'fiveE-archive-magic-items-page',
   standalone: true,
-  imports: [CommonModule, MagicItemCardComponent, CardContainerComponent],
+  imports: [CommonModule, MagicItemCardComponent, CardContainerComponent, SearchBarComponent],
   templateUrl: './magic-items-page.component.html',
   styleUrl:    './magic-items-page.component.scss'
 })
@@ -18,7 +19,7 @@ export class MagicItemsPageComponent implements OnInit {
   public magic_items: MagicItem[] = []
   private debounce: any = null;
 
-  @ViewChild("nameSearch",{static: false}) inputElement: ElementRef;
+  public searchBarConfig = new MagicItem();
 
   ngOnInit(){
     this.http.get('assets/magic_items.json', {responseType: 'json'})
@@ -40,24 +41,22 @@ export class MagicItemsPageComponent implements OnInit {
       clearTimeout(this.debounce);
     }
 
-    this.debounce = setTimeout(() => this.doFilterSearch(), 150);
+    this.debounce = setTimeout(() => this.doFilterSearch(event), 150);
   }
 
-  private doFilterSearch(){
-    const nameSearchTerm: string = this.inputElement.nativeElement.value.toLowerCase();
+  private doFilterSearch(event: Event){
+    const nameSearchTerm: string = event.toString().toLowerCase();
 
     const params: {searchKey: string, searchValue: any}[] = []
 
     if(!!nameSearchTerm){
 
-      console.log('adding params')
       params.push({
         searchKey:"name",
         searchValue: nameSearchTerm
       })
     }
     
-    console.log('params', params)
     this.debounce = null;
     this.setShownMagicItems(this.search.getSearchResults(params) as MagicItem[]);
   }

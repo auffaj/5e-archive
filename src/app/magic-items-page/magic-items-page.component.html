@@ -1,5 +1,5 @@
 <div class="search-container">
-    <input #nameSearch (input)="filterSearched($event)" type="text" placeholder="Search Title..."/>
+    <fiveE-archive-search-bar [config]="searchBarConfig" (filterSubmitted)="filterSearched($event)"></fiveE-archive-search-bar>
 </div>
 
 <div class="card-container" *ngFor="let magic_item of magic_items">
