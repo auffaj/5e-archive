@@ -1,5 +1,5 @@
 <div>
-    <input (input)="filterSearched($event)" type="text" placeholder="Search Title..."/>
+    <fiveE-archive-search-bar-feat (filterSubmitted)="filterSearched($event)"></fiveE-archive-search-bar-feat>
 </div>
 
 <div class="card-container" *ngFor="let feat of feats">
