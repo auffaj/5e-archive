@@ -36,7 +36,7 @@ export class SpellsPageComponent implements OnInit {
   /**
     Queue search with debounce
   */
-    filterSearched(event: Event){
+    filterSearched(event: Spell){
       if(this.debounce != null){
         clearTimeout(this.debounce);
       }
@@ -44,20 +44,8 @@ export class SpellsPageComponent implements OnInit {
       this.debounce = setTimeout(() => this.doFilterSearch(event), 150);
     }
   
-    private doFilterSearch(event: Event){
-      const nameSearchTerm: string = event.toString().toLowerCase();
-  
-      const params: {searchKey: string, searchValue: any}[] = []
-  
-      if(!!nameSearchTerm){
-  
-        params.push({
-          searchKey:"name",
-          searchValue: nameSearchTerm
-        })
-      }
-      
+    private doFilterSearch(event: Spell){
       this.debounce = null;
-      this.setShownSpells(this.search.getSearchResults(params) as Spell[]);
+      this.setShownSpells(this.search.getSearchResults(event) as Spell[]);
     }
 }

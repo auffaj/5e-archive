@@ -34,7 +34,7 @@ export class MagicItemsPageComponent implements OnInit {
   /**
     Queue search with debounce
   */
-  filterSearched(event: Event){
+  filterSearched(event: MagicItem){
     if(this.debounce != null){
       clearTimeout(this.debounce);
     }
@@ -42,20 +42,8 @@ export class MagicItemsPageComponent implements OnInit {
     this.debounce = setTimeout(() => this.doFilterSearch(event), 150);
   }
 
-  private doFilterSearch(event: Event){
-    const nameSearchTerm: string = event.toString().toLowerCase();
-
-    const params: {searchKey: string, searchValue: any}[] = []
-
-    if(!!nameSearchTerm){
-
-      params.push({
-        searchKey:"name",
-        searchValue: nameSearchTerm
-      })
-    }
-    
+  private doFilterSearch(event: MagicItem){
     this.debounce = null;
-    this.setShownMagicItems(this.search.getSearchResults(params) as MagicItem[]);
+    this.setShownMagicItems(this.search.getSearchResults(event) as MagicItem[]);
   }
 }

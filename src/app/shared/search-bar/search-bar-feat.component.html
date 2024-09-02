@@ -1,7 +1,7 @@
 <mat-form-field class="example-form-field">
     <mat-label>Name</mat-label>
-    <input matInput type="text" [(ngModel)]="name" (ngModelChange)="submit($event)">
-      <button *ngIf="!!name" matSuffix mat-icon-button aria-label="Clear" (click)="name=''">
+    <input matInput type="text" [(ngModel)]="config.name" (ngModelChange)="submit()">
+      <button *ngIf="!!config.name" matSuffix mat-icon-button aria-label="Clear" (click)="config.name=''">
         <mat-icon>close</mat-icon>
       </button>
 </mat-form-field>

@@ -20,8 +20,8 @@ export abstract class SearchBarComponent {
   
     @Output() filterSubmitted = new EventEmitter();
   
-    submit(event: Event){
-      this.filterSubmitted.emit(event)
+    submit(){
+      this.filterSubmitted.emit(this.config)
     }
   }
 

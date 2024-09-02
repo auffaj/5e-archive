@@ -1,4 +1,8 @@
 import { Injectable } from '@angular/core';
+import { Feat } from '../../../feats-page/feat';
+import { Spell } from '../../../spells-page/spell';
+import { Equip } from '../../../equipment-page/equip';
+import { MagicItem } from '../../../magic-items-page/magic-item';
 
 @Injectable({
   providedIn: 'root'
@@ -13,19 +17,28 @@ export class SearchService {
     this.pristineCopy = JSON.parse(JSON.stringify(data));
   }
 
-  public getSearchResults(params : {searchKey: string, searchValue: any}[] = []){
+  public getUnfilteredList(){
+    return JSON.parse(JSON.stringify(this.pristineCopy));
+  }
+
+  public getSearchResults(params : any = null){
     if(this.pristineCopy == null){ return null; }
-    if(params.length == 0){ return this.pristineCopy.filter(row => true); }
+
+    if(params == null){ return this.getUnfilteredList(); }
+    else if(Object.values(params).filter(val => !!val).length == 0){ return this.getUnfilteredList(); }
 
     return this.pristineCopy.filter(row => {
-      return !!params.find(param => {
-        const searchType = typeof(row[param.searchKey])
-        if(searchType == "string"){
-          return (row[param.searchKey] as string).toLowerCase().includes(param.searchValue.toLowerCase());
+      let hasData: boolean = false;
+      Object.keys(params).forEach(item => {
+        if(hasData){ return; }
+        if(!params[item]){ return; } // ignore empty filters
+
+        if(typeof(params[item]) == 'string'){
+          hasData = row[item].toLowerCase().includes(params[item].toLowerCase());
         }
-        
-        return false;
       })
+    
+      return hasData;
     });
   }
 

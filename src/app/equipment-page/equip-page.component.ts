@@ -32,8 +32,7 @@ export class EquipsPageComponent implements OnInit {
     this.equips = JSON.parse(JSON.stringify(_data_));
   }
 
-
-  filterSearched(event: Event){
+  filterSearched(event: Equip){
     if(this.debounce != null){
       clearTimeout(this.debounce);
     }
@@ -41,20 +40,8 @@ export class EquipsPageComponent implements OnInit {
     this.debounce = setTimeout(() => this.doFilterSearch(event), 150);
   }
 
-  private doFilterSearch(event: Event){
-    const nameSearchTerm: string = event.toString().toLowerCase();
-
-    const params: {searchKey: string, searchValue: any}[] = []
-
-    if(!!nameSearchTerm){
-
-      params.push({
-        searchKey:"name",
-        searchValue: nameSearchTerm
-      })
-    }
-    
+  private doFilterSearch(event: Equip){
     this.debounce = null;
-    this.setShownEquips(this.search.getSearchResults(params) as Equip[]);
+    this.setShownEquips(this.search.getSearchResults(event) as Equip[]);
   }
 }
