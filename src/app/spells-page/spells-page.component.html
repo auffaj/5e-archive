@@ -1,5 +1,6 @@
 <div>
-    <fiveE-archive-search-bar-spell (filterSubmitted)="filterSearched($event)"></fiveE-archive-search-bar-spell>
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+    <fiveE-archive-search-bar-spell  *ngIf="!loading" (filterSubmitted)="filterSearched($event)"></fiveE-archive-search-bar-spell>
 </div>
 
 <div class="card-container" *ngFor="let spell of spells">

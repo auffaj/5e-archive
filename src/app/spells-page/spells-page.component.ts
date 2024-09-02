@@ -6,11 +6,12 @@ import { HttpClient } from '@angular/common/http';
 import { CardContainerComponent } from '../shared/card-container/card-container.component';
 import { SearchBarSpellComponent } from '../shared/search-bar/search-bar.component';
 import { SearchService } from '../shared/services/search/search.service';
+import { MatProgressBar } from '@angular/material/progress-bar';
 
 @Component({
   selector: 'fiveE-archive-spells-page',
   standalone: true,
-  imports: [CommonModule, SpellCardComponent, CardContainerComponent, SearchBarSpellComponent],
+  imports: [CommonModule, SpellCardComponent, CardContainerComponent, SearchBarSpellComponent, MatProgressBar],
   providers:[HttpClient],
   templateUrl: './spells-page.component.html',
   styleUrl: './spells-page.component.scss'
@@ -20,11 +21,15 @@ export class SpellsPageComponent implements OnInit {
   public spells: Spell[] = []
   private debounce: any = null;
 
+  public loading: boolean = true;
+
   ngOnInit(){
     this.http.get('assets/spells.json', {responseType: 'json'})
         .subscribe(data => {
           this.search.setData(data);
           this.setShownSpells(data as Spell[]);
+
+          setTimeout(() => this.loading = false, 500);
         });
      
   }
