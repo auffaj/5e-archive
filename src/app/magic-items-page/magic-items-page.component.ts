@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MagicItem } from './magic-item';
 import { CommonModule } from '@angular/common';
 import { MagicItemCardComponent } from './components/magic-item-card/magic-item-card.component';
