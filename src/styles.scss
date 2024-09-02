@@ -9,4 +9,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
         border-radius: 15px;
         margin-bottom: 10px;
     }
+
+    
+    .mat-expansion-panel-body{
+        max-height: 70vh;
+        overflow-y: scroll;
+    }
 }
