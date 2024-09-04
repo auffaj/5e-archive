@@ -1,12 +1,14 @@
 import { Component, Directive, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
-import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
+import { MatFormField, MatInput, MatLabel, MatSuffix } from '@angular/material/input';
 import { MagicItem } from '../../magic-items-page/magic-item';
 import { Feat } from '../../feats-page/feat';
 import { Equip } from '../../equipment-page/equip';
 import { Spell } from '../../spells-page/spell';
 import { NgIf } from '@angular/common';
+
+const IMPORTS = [MatInput, MatIcon, MatFormField, MatLabel, FormsModule, NgIf, MatSuffix]
 
 /**
  * All Generic Functionality for the search bar components.
@@ -16,56 +18,100 @@ import { NgIf } from '@angular/common';
 export abstract class SearchBarComponent {
     public name: string = "";
 
-    public config: any;
+    public dataConfig: any;
   
     @Output() filterSubmitted = new EventEmitter();
-  
+
+    reset(key:string){ /* set overridden per component, refresh value back to default nothing */ }
+
     submit(){
-      this.filterSubmitted.emit(this.config)
+      this.filterSubmitted.emit(this.dataConfig)
     }
   }
 
 @Component({
   selector: 'fiveE-archive-search-bar-magic-item',
   standalone: true,
-  imports: [MatInput, MatIcon, MatFormField, MatLabel, FormsModule, NgIf],
+  imports: IMPORTS,
   templateUrl: './search-bar-magic-item.component.html',
   styleUrl: './search-bar.component.scss'
 })
 export class SearchBarMagicItemComponent extends SearchBarComponent{
-  public override config: MagicItem = new MagicItem();
+  public override dataConfig: MagicItem = new MagicItem();
+
+  public override reset(key: string): void {
+    switch(key){
+      case("name"):
+        this.dataConfig.name = '';
+        break;
+
+        
+    }
+    this.submit()
+  }
 }
 
 @Component({
   selector: 'fiveE-archive-search-bar-equip',
   standalone: true,
-  imports: [MatInput, MatIcon, MatFormField, MatLabel, FormsModule, NgIf],
+  imports: IMPORTS,
   templateUrl: './search-bar-equip.component.html',
   styleUrl: './search-bar.component.scss'
 })
 export class SearchBarEquipComponent extends SearchBarComponent{
-  public override config: Equip = new Equip();
+  public override dataConfig: Equip = new Equip();
+
+  public override reset(key: string): void {
+    switch(key){
+      case("name"):
+        this.dataConfig.name = '';
+        break;
+    }
+    this.submit()    
+      
+  }
 }
 
 @Component({
   selector: 'fiveE-archive-search-bar-spell',
   standalone: true,
-  imports: [MatInput, MatIcon, MatFormField, MatLabel, FormsModule, NgIf],
+  imports: IMPORTS,
   templateUrl: './search-bar-spell.component.html',
   styleUrl: './search-bar.component.scss'
 })
 export class SearchBarSpellComponent extends SearchBarComponent{
-  public override config: Spell = new Spell();
+  public override dataConfig: Spell = new Spell();
+
+  public override reset(key: string): void {
+      switch(key){
+        case("name"):
+          this.dataConfig.name = '';
+          break;
+      }
+      this.submit()    
+  }
 }
 
 
 @Component({
   selector: 'fiveE-archive-search-bar-feat',
   standalone: true,
-  imports: [MatInput, MatIcon, MatFormField, MatLabel, FormsModule, NgIf],
+  imports: IMPORTS,
   templateUrl: './search-bar-feat.component.html',
   styleUrl: './search-bar.component.scss'
 })
 export class SearchBarFeatComponent extends SearchBarComponent{
-  public override config: Feat = new Feat();
+  public override dataConfig: Feat = new Feat();
+
+  public override reset(key: string): void {
+    switch(key){
+      case("name"):
+        this.dataConfig.name = '';
+        break;
+    }
+
+    this.submit()    
+  }
+
+  
 }

@@ -1,8 +1,5 @@
-<mat-form-field class="example-form-field">
-    <mat-label>Name</mat-label>
-    <input matInput type="text" [(ngModel)]="config.name" (ngModelChange)="submit()">
-      <button *ngIf="!!config.name" matSuffix mat-icon-button aria-label="Clear" (click)="config.name=''">
-        <mat-icon>close</mat-icon>
-      </button>
+<mat-form-field appearance="outline">
+  <mat-label>Name</mat-label>
+  <input matInput placeholder="Search Name" type="text" [(ngModel)]="dataConfig.name" (ngModelChange)="submit()"/>
+  <mat-icon class="clickable" *ngIf="!!dataConfig.name" matSuffix (click)="reset('name')">close</mat-icon>
 </mat-form-field>
-  
