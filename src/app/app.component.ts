@@ -4,15 +4,17 @@ import { RouterOutlet } from '@angular/router';
 import { SpellsPageComponent } from './spells-page/spells-page.component';
 import { EquipsPageComponent } from "./equipment-page/equip-page.component";
 import { MagicItemsPageComponent } from './magic-items-page/magic-items-page.component';
-import { MatExpansionModule } from "@angular/material/expansion"
 import { FeatsPageComponent } from './feats-page/feat-page.component';
+import { MatTab, MatTabChangeEvent, MatTabContent, MatTabGroup } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet,
             CommonModule,
-            MatExpansionModule,
+            MatTab,
+            MatTabGroup,
+            MatTabContent,
             
             SpellsPageComponent,
             MagicItemsPageComponent,
@@ -24,5 +26,17 @@ import { FeatsPageComponent } from './feats-page/feat-page.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = '5e Archive, thank you D&D B!';
+  public wasLoaded: any = {
+    "Spells": false,
+    "Equipment": false,
+    "Feats": false,
+    "Magic Items": false
+  }
+
+  pageLoaded(event: MatTabChangeEvent){
+    console.log(event.tab.textLabel);
+
+    this.wasLoaded[event.tab.textLabel] = true;
+    console.log(this.wasLoaded);
+  }
 }

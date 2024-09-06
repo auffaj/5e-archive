@@ -1,5 +1,16 @@
 .body-container{
-    height: 100%;
+    height: 100vh;
+    max-height: 100vh;
     background: rgb(130,170,171);
     background: linear-gradient(332deg, rgba(130,170,171,1) 0%, rgba(148,116,47,1) 100%); 
+}
+.mat-mdc-tab-group{
+    max-height: 100%;
+}
+.panel-body{
+    height: 100%;
+    overflow-y: scroll;
+}
+::ng-deep #mat-tab-label-0-0{
+    display: none;
 }

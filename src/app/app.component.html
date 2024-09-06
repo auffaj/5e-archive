@@ -1,56 +1,25 @@
 <div class="body-container">
-    <h4>{{title}}</h4>
-
-    <mat-accordion [multi]="true">
-        <!-- Spells -->
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title> Spells </mat-panel-title>
-                <mat-panel-description> Spell Lookup </mat-panel-description>
-            </mat-expansion-panel-header>
-            <ng-template class="panel-body" matExpansionPanelContent>
+    <mat-tab-group (selectedTabChange)="pageLoaded($event)">
+        <mat-tab></mat-tab> <!-- placeholder to force page selection -->
+        <mat-tab label="Spells">
+            <div *ngIf="wasLoaded['Spells']" class="panel-body">
                 <fiveE-archive-spells-page></fiveE-archive-spells-page>
-            </ng-template>
-        </mat-expansion-panel>
-
-        <!-- Equipment -->
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title> Equipment </mat-panel-title>
-                <mat-panel-description>
-                Equipment Lookup
-                </mat-panel-description>
-            </mat-expansion-panel-header>
-            <ng-template class="panel-body" matExpansionPanelContent>
+            </div>
+        </mat-tab>
+        <mat-tab label="Equipment">
+            <div *ngIf="wasLoaded['Equipment']" class="panel-body">
                 <fiveE-archive-equips-page></fiveE-archive-equips-page>
-            </ng-template>
-        </mat-expansion-panel>
-
-        <!-- Feats -->
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title> Feats </mat-panel-title>
-                <mat-panel-description>
-                Feat Lookup
-                </mat-panel-description>
-            </mat-expansion-panel-header>
-            <ng-template class="panel-body" matExpansionPanelContent>
+            </div>
+        </mat-tab>
+        <mat-tab label="Feats">
+            <div *ngIf="wasLoaded['Feats']" class="panel-body">
                 <fiveE-archive-feats-page></fiveE-archive-feats-page>
-            </ng-template>
-        </mat-expansion-panel>
-
-        <!-- Magic Items -->
-        <mat-expansion-panel>
-            <mat-expansion-panel-header>
-                <mat-panel-title> Magic Items </mat-panel-title>
-                <mat-panel-description>
-                Magic Item Lookup
-                </mat-panel-description>
-            </mat-expansion-panel-header>
-            <ng-template class="panel-body" matExpansionPanelContent>
+            </div>
+        </mat-tab>
+        <mat-tab label="Magic Items">
+            <div *ngIf="wasLoaded['Magic Items']" class="panel-body">
                 <fiveE-archive-magic-items-page></fiveE-archive-magic-items-page>
-            </ng-template>
-        </mat-expansion-panel>
-    </mat-accordion>
-    
+            </div>
+        </mat-tab>
+      </mat-tab-group>
 </div>

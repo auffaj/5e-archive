@@ -1,4 +1,4 @@
-<mat-form-field appearance="outline">
+<mat-form-field>
   <mat-label>Name</mat-label>
   <input matInput placeholder="Search Name" type="text" [(ngModel)]="dataConfig.name" (ngModelChange)="submit()"/>
   <mat-icon class="clickable" *ngIf="!!dataConfig.name" matSuffix (click)="reset('name')">close</mat-icon>
