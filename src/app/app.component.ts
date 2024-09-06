@@ -6,6 +6,7 @@ import { EquipsPageComponent } from "./equipment-page/equip-page.component";
 import { MagicItemsPageComponent } from './magic-items-page/magic-items-page.component';
 import { FeatsPageComponent } from './feats-page/feat-page.component';
 import { MatTab, MatTabChangeEvent, MatTabContent, MatTabGroup } from '@angular/material/tabs';
+import { NgScrollbarModule} from 'ngx-scrollbar'
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,7 @@ import { MatTab, MatTabChangeEvent, MatTabContent, MatTabGroup } from '@angular/
             MatTab,
             MatTabGroup,
             MatTabContent,
+            NgScrollbarModule,
             
             SpellsPageComponent,
             MagicItemsPageComponent,

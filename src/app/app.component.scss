@@ -7,10 +7,15 @@
 .mat-mdc-tab-group{
     max-height: 100%;
 }
+.panel-body-container{
+    height: 100%;
+}
 .panel-body{
     height: 100%;
-    overflow-y: scroll;
+    padding-left: 10px;
+    padding-right: 20px;
 }
 ::ng-deep #mat-tab-label-0-0{
     display: none;
 }
+

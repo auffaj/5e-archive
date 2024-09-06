@@ -1,6 +1,6 @@
-<mat-drawer-container class="example-container" autosize>
+<mat-drawer-container class="card-container" autosize>
     <!-- main view -->
-    <div class="example-sidenav-content">
+    <div class="card-sidenav-content">
         <ng-content></ng-content>
         <div class="button-container">
             <button *ngIf="description != null"
@@ -35,7 +35,7 @@
     </div>
 
      <!-- Sliding panel -->
-     <mat-drawer #drawer class="example-sidenav" mode="side" position="end">
+     <mat-drawer #drawer class="card-sidenav" mode="side" position="end">
         <span *ngIf="drawerContent.title != null">{{drawerContent.title}}</span>
         <div class="description" *ngIf="this.currentSubject != null">
             {{drawerContent.body}}

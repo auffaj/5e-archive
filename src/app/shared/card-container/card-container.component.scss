@@ -1,12 +1,13 @@
-.example-container {
-    flex:1;
-    min-height:200px;
-    max-height: 300px;
+  .card-container {
+    min-height: 200px;
     border-radius: 15px;
-    height: 100%;
+    height: calc(100% + 20px);
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
   
-  .example-sidenav-content {
+  .card-sidenav-content {
     display: flex;
     height: 100%;
     align-items: center;
@@ -14,7 +15,7 @@
     overflow: hidden;
   }
   
-  .example-sidenav {
+  .card-sidenav {
     padding: 20px;
   }
 
