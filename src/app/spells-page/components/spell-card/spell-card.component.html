@@ -16,9 +16,11 @@
     <div>
         <label>Components: </label>
         <span>{{data.components}}</span>
+        <mat-icon class="component-icon" *ngIf="!!data.concentration" color="primary" title="Concentration">psychology</mat-icon>
+        <mat-icon class="component-icon" *ngIf="!!data.ritual" color="primary" title="Ritual">church</mat-icon>
     </div>
     <div>
-        <label>Duration: </label>
+        <<label>Duration: </label>>
         <span>{{data.duration}}</span>
     </div>
     <div>
@@ -29,20 +31,8 @@
         <label>Attack/Save: </label>
         <span>{{data.attack_save}}</span>
     </div>    
-    <div>
-        <label>Banned: </label>
-        <span>{{data.banned}}</span>
-    </div>
-    <div>
-        <label>Concentration: </label>
-        <span>{{data.concentration}}</span>
-    </div>
-    <div>
-        <label>Ritual: </label>
-        <span>{{data.ritual}}</span>
-    </div>
-    <div>
-        <label>Materials: </label>
+        
+    <div class="materials" *ngIf="!!data.materials">
         <span>{{data.materials}}</span>
     </div>
 </div>

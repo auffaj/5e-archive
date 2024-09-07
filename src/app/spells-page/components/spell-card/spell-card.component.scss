@@ -3,23 +3,20 @@
     //border-radius: 2px;
     margin-bottom: 5px;
     
-    .title{
-        cursor: pointer;
-        padding: 10px;
+    .materials{
+        font-style: italic;
+        font-size: 12px;
     }
-    .title:hover{
-        background-color: rgb(186, 169, 246);
+
+    .active{
+        color: #00FFFF
     }
-    label{
-        margin-right:15px;
+    .inactive{
+        color: #3e3e3e
     }
-    p{
-        margin: 2px;
-    }
-    .description{
-        background-color: rgb(225, 225, 225);
-        margin-top: 25px;
-        padding: 25px;
-        border: 1px solid lightgray;
+
+    .component-icon{
+        top: 5px;
+        position: relative;
     }
 }

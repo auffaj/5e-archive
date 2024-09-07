@@ -1,21 +1,25 @@
 <div class="container">
 
-    <h4>{{data.name}}</h4>
-    <h5>{{data.notes}}</h5>
-    <p>
+    <div class="title">
+        <span>{{data.name}}</span>
+    </div>
+    <div class="sub-title">
+        <span>{{data.notes}}</span>
+    </div>
+    <div>
         <label>Category: </label>
         <span>{{data.category}}</span>
-    </p>
-    <p>
+    </div>
+    <div *ngIf="!!data.cost">
         <label>Cost: </label>
         <span>{{data.cost}}</span>
-    </p>
-    <p>
+    </div>
+    <div *ngIf="!!data.damage">
         <label>Damage: </label>
         <span>{{data.damage}}</span>
-    </p>
-    <p>
+    </div>
+    <div *ngIf="!!data.weight">
         <label>Weight: </label>
         <span>{{data.weight}}</span>
-    </p>
+    </div>
 </div>

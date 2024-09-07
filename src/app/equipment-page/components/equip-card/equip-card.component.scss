@@ -4,22 +4,11 @@
     margin-bottom: 5px;
     
     .title{
-        cursor: pointer;
-        padding: 10px;
+        font-size: 25px;
     }
-    .title:hover{
-        background-color: rgb(186, 169, 246);
-    }
-    label{
-        margin-right:15px;
-    }
-    p{
-        margin: 2px;
-    }
-    .description{
-        background-color: rgb(225, 225, 225);
-        margin-top: 25px;
-        padding: 25px;
-        border: 1px solid lightgray;
+    .sub-title{
+        margin-bottom: 15px;
+        font-style: italic;
+        font-size: 15px;
     }
 }

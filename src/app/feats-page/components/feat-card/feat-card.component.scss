@@ -4,16 +4,17 @@
     margin-bottom: 5px;
     
     .title{
-        cursor: pointer;
-        padding: 10px;
+        font-size: 25px;
     }
-    .title:hover{
-        background-color: rgb(186, 169, 246);
+    .sub-title{
+        margin-bottom: 15px;
+        font-style: italic;
+        font-size: 15px;
     }
-    label{
-        margin-right:15px;
-    }
-    p{
-        margin: 2px;
+    .effect{
+        display:flex;
+        flex-direction: column;
+        width: max-content;
+        height: max-content;
     }
 }

@@ -1,10 +1,15 @@
 <div class="container">
-    <h4> {{data.name}} </h4>
-    <p>
-        <label>Effect:</label>
-        <span>{{data.effect}}</span>
-    </p>
-    <p>
+    <div class="title">
+        <span>{{data.name}}</span>
+    </div>
+    <div class="sub-title">
         <span>{{data.prerequisite}}</span>
-    </p>
+    </div>
+        
+    <div class="effect">
+        <div class="effect-description">
+            <span>{{data.effect}}</span>
+        </div>
+    </div>
+
 </div>

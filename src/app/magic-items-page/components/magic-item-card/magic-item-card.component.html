@@ -1,15 +1,15 @@
 <div class="container">
-    <h4> {{data.name}} </h4>
-    <p>
+    <div class="title">
+        <label>{{data.name}}</label>
+    </div>
+    <div class="sub-title">
+        <label>{{data.type}}</label>
+    </div>
+    <div>
         <label>Rarity: </label>
         <span>{{data.rarity}}</span>
-    </p>
-    <p>
-        <label>Attunement: </label>
-        <span>{{data.attunement}}</span>
-    </p>
-    <p>
-        <label>Type: </label>
-        <span>{{data.type}}</span>
-    </p>
+    </div>
+    <div *ngIf="!!data.attunement">
+        <label>Attunement Required</label>
+    </div>
 </div>
