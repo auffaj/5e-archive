@@ -1,8 +1,12 @@
 .body-container{
     height: 100vh;
     max-height: 100vh;
-    background: rgb(130,170,171);
-    background: linear-gradient(332deg, rgba(130,170,171,1) 0%, rgba(148,116,47,1) 100%); 
+    background: #0d1117;
+
+
+}
+::ng-deep .body-container .mdc-tab--active{
+    background-color: rgba(0, 221, 221, 0.2);
 }
 .mat-mdc-tab-group{
     max-height: 100%;
