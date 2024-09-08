@@ -35,7 +35,7 @@
     </div>
 
      <!-- Sliding panel -->
-     <mat-drawer #drawer class="card-sidenav" mode="side" position="end">
+     <mat-drawer #drawer class="card-sidenav" mode="side" position="end" opened>
         <span *ngIf="drawerContent.title != null">{{drawerContent.title}}</span>
         <div class="description" *ngIf="this.currentSubject != null">
             {{drawerContent.body}}

@@ -110,16 +110,6 @@
         "footer": "Tags: \n                \n                    Utility"
     },
     {
-        "name": "Antigravity Belt",
-        "category": "Adventuring Gear",
-        "cost": "--",
-        "weight": "--",
-        "damage": "",
-        "notes": "technology",
-        "description": "",
-        "footer": ""
-    },
-    {
         "name": "Antimatter Rifle",
         "category": "Firearms Ranged Weapon",
         "cost": "--",
@@ -583,16 +573,6 @@
         "notes": "Utility",
         "description": "A thick, quilted, blanket made to keep you warm in cold weather.",
         "footer": "Tags: \n                \n                    Utility"
-    },
-    {
-        "name": "Blaster",
-        "category": "",
-        "cost": "--",
-        "weight": "--",
-        "damage": "Radiant",
-        "notes": "",
-        "description": "",
-        "footer": ""
     },
     {
         "name": "Blasting Powder",

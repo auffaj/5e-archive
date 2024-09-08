@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,25 +15,26 @@ import { NgIf } from '@angular/common';
   standalone: true,
   imports: [MatSidenavModule, MatButtonModule,MatIconModule,NgIf]
 })
-export class CardContainerComponent {
+export class CardContainerComponent implements OnInit{
   @Input() description: string[] | string | null = null;
   @Input() tags: string[] | string | null = null;
   @Input() sourcebook: string | null = null;
   @Input() classes: string[] | null = null;
 
-  public currentSubject: string | null = null;
+  public currentSubject: string | null = 'description';
   public title: string | null = null;
-  public drawerContent: {title: string | null, body: string | null} = this.getDrawerContent()
+  public drawerContent!: {title: string | null, body: string | null};
+
+  ngOnInit(): void {
+      this.drawerContent = this.getDrawerContent();
+  }
 
   openDrawer(drawer: MatDrawer, subject: string): undefined{
-    if(drawer.opened && this.currentSubject == subject){
-      drawer.close();
-      this.currentSubject = null;
+    if(this.currentSubject == subject){
+      return;
     }
     else if(this.currentSubject != subject){
       this.currentSubject = subject;
-
-      drawer.open();
     }
 
     this.drawerContent = this.getDrawerContent();
