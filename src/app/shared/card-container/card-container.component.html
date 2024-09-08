@@ -1,7 +1,9 @@
 <mat-drawer-container class="card-container" autosize>
     <!-- main view -->
     <div class="card-sidenav-content">
-        <ng-content></ng-content>
+        <div class="content-wrapper">
+            <ng-content></ng-content>
+        </div>
         <div class="button-container">
             <button *ngIf="description != null"
                     type="button"
@@ -40,7 +42,6 @@
         <div class="description" *ngIf="this.currentSubject != null">
             {{drawerContent.body}}
         </div>
-        
     </mat-drawer>
   
   </mat-drawer-container>
