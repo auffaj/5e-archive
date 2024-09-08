@@ -1,8 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Feat } from '../../../feats-page/feat';
-import { Spell } from '../../../spells-page/spell';
-import { Equip } from '../../../equipment-page/equip';
-import { MagicItem } from '../../../magic-items-page/magic-item';
 
 @Injectable({
   providedIn: 'root'

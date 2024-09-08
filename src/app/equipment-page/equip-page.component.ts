@@ -2,21 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { Equip } from './equip';
 import { CommonModule } from '@angular/common';
 import { EquipCardComponent } from './components/equip-card/equip-card.component';
-import { HttpClient } from '@angular/common/http';
 import { CardContainerComponent } from '../shared/card-container/card-container.component';
 import { SearchBarEquipComponent } from '../shared/search-bar/search-bar.component';
 import { SearchService } from '../shared/services/search/search.service';
 import { MatProgressBar } from '@angular/material/progress-bar';
+import { DataService } from '../shared/services/data/data.service';
 
 @Component({
   selector: 'fiveE-archive-equips-page',
   standalone: true,
   imports: [CommonModule, EquipCardComponent,CardContainerComponent, SearchBarEquipComponent, MatProgressBar],
+  providers:[DataService],
   templateUrl: './equip-page.component.html',
   styleUrl: './equip-page.component.scss'
 })
 export class EquipsPageComponent implements OnInit {
-  constructor(private http: HttpClient, private search: SearchService){}
+  constructor(private search: SearchService, private data: DataService){}
   public equips: Equip[] = []
 
   public loading: boolean = true;
@@ -24,7 +25,7 @@ export class EquipsPageComponent implements OnInit {
   private debounce: any = null;
 
   ngOnInit(){
-    this.http.get('assets/equipment.json', {responseType: 'json'})
+    this.data.getEquipment()
     .subscribe(data => {
       this.search.setData(data);
       this.setShownEquips(this.search.getSearchResults() as Equip[]);

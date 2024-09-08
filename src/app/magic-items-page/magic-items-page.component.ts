@@ -2,28 +2,29 @@ import { Component, OnInit } from '@angular/core';
 import { MagicItem } from './magic-item';
 import { CommonModule } from '@angular/common';
 import { MagicItemCardComponent } from './components/magic-item-card/magic-item-card.component';
-import { HttpClient } from '@angular/common/http';
 import { CardContainerComponent } from '../shared/card-container/card-container.component';
 import { SearchService } from '../shared/services/search/search.service';
 import { SearchBarMagicItemComponent } from '../shared/search-bar/search-bar.component';
 import { MatProgressBar } from '@angular/material/progress-bar';
+import { DataService } from '../shared/services/data/data.service';
 
 @Component({
   selector: 'fiveE-archive-magic-items-page',
   standalone: true,
   imports: [CommonModule, MagicItemCardComponent, CardContainerComponent, SearchBarMagicItemComponent, MatProgressBar],
+  providers:[DataService],
   templateUrl: './magic-items-page.component.html',
   styleUrl:    './magic-items-page.component.scss'
 })
 export class MagicItemsPageComponent implements OnInit {
-  constructor(private http: HttpClient, private search: SearchService){}
+  constructor(private search: SearchService, private data: DataService){}
   public magic_items: MagicItem[] = []
   private debounce: any = null;
 
   public loading: boolean = true;
 
   ngOnInit(){
-    this.http.get('assets/magic_items.json', {responseType: 'json'})
+    this.data.getMagicItems()
     .subscribe(data => {
       this.search.setData(data);
       this.setShownMagicItems(this.search.getSearchResults() as MagicItem[]);

@@ -2,28 +2,29 @@ import { Component, OnInit } from '@angular/core';
 import { Feat } from './feat';
 import { CommonModule } from '@angular/common';
 import { FeatCardComponent } from './components/feat-card/feat-card.component';
-import { HttpClient } from '@angular/common/http';
 import { CardContainerComponent } from '../shared/card-container/card-container.component';
 import { SearchBarFeatComponent } from '../shared/search-bar/search-bar.component';
 import { SearchService } from '../shared/services/search/search.service';
 import { MatProgressBar } from '@angular/material/progress-bar';
+import { DataService } from '../shared/services/data/data.service';
 
 @Component({
   selector: 'fiveE-archive-feats-page',
   standalone: true,
   imports: [CommonModule, FeatCardComponent, CardContainerComponent, SearchBarFeatComponent, MatProgressBar],
+  providers:[DataService],
   templateUrl: './feat-page.component.html',
   styleUrl: './feat-page.component.scss'
 })
 export class FeatsPageComponent implements OnInit {
-  constructor(private http: HttpClient, private search: SearchService){}
+  constructor(private search: SearchService, private data: DataService){}
   public feats: Feat[] = []
   private debounce: any = null;
 
   public loading: boolean = true;
   
   ngOnInit(){
-    this.http.get('assets/feats.json', {responseType: 'json'})
+    this.data.getFeats()
         .subscribe(data => {
           this.search.setData(data);
           this.setShownFeats(data as Feat[]);
