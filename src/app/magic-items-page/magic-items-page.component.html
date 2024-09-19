@@ -3,7 +3,7 @@
     <fiveE-archive-search-bar-magic-item *ngIf="!loading" (filterSubmitted)="filterSearched($event)"></fiveE-archive-search-bar-magic-item>
 </div>
 
-<div class="card-container" *ngFor="let magic_item of magic_items">
+<div class="card-container" *ngFor="let magic_item of cards">
     <fiveE-archive-card-container
         [description]="[magic_item.upperDescription, magic_item.mainDescription, magic_item.lowerDescription]"
         [tags]="magic_item.footerTags"

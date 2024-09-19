@@ -3,7 +3,7 @@
     <fiveE-archive-search-bar-feat *ngIf="!loading" (filterSubmitted)="filterSearched($event)"></fiveE-archive-search-bar-feat>
 </div>
 
-<div class="card-container" *ngFor="let feat of feats">
+<div class="card-container" *ngFor="let feat of cards">
     <fiveE-archive-card-container
         [description]="feat.description"
         [tags]="feat.tags"

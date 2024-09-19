@@ -18,24 +18,35 @@ import { DataService } from '../shared/services/data/data.service';
 })
 export class EquipsPageComponent implements OnInit {
   constructor(private search: SearchService, private data: DataService){}
-  public equips: Equip[] = []
+  public cards: Equip[] = []
 
   public loading: boolean = true;
+
+  private maxSize: number = 0;
+  public limitCount: number = 20;
 
   private debounce: any = null;
 
   ngOnInit(){
-    this.data.getEquipment()
-    .subscribe(data => {
-      this.search.setData(data);
-      this.setShownEquips(this.search.getSearchResults() as Equip[]);
-
-      setTimeout(() => this.loading = false, 500);
-  });
+    this.data
+        .getEquipment()
+        .subscribe(data => this.initCards(data));
   }
 
-  setShownEquips(_data_: Equip[]){
-    this.equips = JSON.parse(JSON.stringify(_data_));
+  initCards(_data_: Equip[]){
+    this.search.setData(_data_);
+    this.setShownCards(_data_);
+    setTimeout(() => this.loading = false, 500);
+  }
+
+  setShownCards(_data_: Equip[]){
+    this.cards = _data_.slice(0, this.limitCount);
+  }
+
+  addMore(){
+    this.limitCount += 25;
+    
+    this.setShownCards(this.search.getSearchResults() as Equip[]);
   }
 
   filterSearched(event: Equip){
@@ -48,6 +59,6 @@ export class EquipsPageComponent implements OnInit {
 
   private doFilterSearch(event: Equip){
     this.debounce = null;
-    this.setShownEquips(this.search.getSearchResults(event) as Equip[]);
+    this.setShownCards(this.search.getSearchResults(event) as Equip[]);
   }
 }

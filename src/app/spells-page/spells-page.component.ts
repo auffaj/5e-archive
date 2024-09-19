@@ -18,24 +18,33 @@ import { DataService } from '../shared/services/data/data.service';
 })
 export class SpellsPageComponent implements OnInit {
   constructor(private search: SearchService, private data: DataService){}
-  public spells: Spell[] = []
+  public cards: Spell[] = []
   private debounce: any = null;
+  private maxSize: number = 0;
+  public limitCount: number = 20;
 
   public loading: boolean = true;
 
   ngOnInit(){
     this.data.getSpells()
-        .subscribe(data => {
-          this.search.setData(data);
-          this.setShownSpells(data as Spell[]);
-
-          setTimeout(() => this.loading = false, 500);
-        });
-     
+        .subscribe(data => this.initCards(data));
   }
 
-  setShownSpells(_data_: Spell[]){
-    this.spells = JSON.parse(JSON.stringify(_data_));
+  initCards(data: Spell[]){
+    this.search.setData(data);
+    this.setShownCards(data);
+
+    setTimeout(() => this.loading = false, 500);
+  }
+
+  setShownCards(_data_: Spell[]){
+    this.cards = _data_.slice(0, this.limitCount);
+  }
+
+  addMore(){
+    this.limitCount += 25;
+    
+    this.setShownCards(this.search.getSearchResults() as Spell[]);
   }
 
   /**
@@ -51,6 +60,6 @@ export class SpellsPageComponent implements OnInit {
   
     private doFilterSearch(event: Spell){
       this.debounce = null;
-      this.setShownSpells(this.search.getSearchResults(event) as Spell[]);
+      this.setShownCards(this.search.getSearchResults(event) as Spell[]);
     }
 }

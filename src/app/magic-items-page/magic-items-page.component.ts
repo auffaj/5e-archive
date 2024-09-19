@@ -18,23 +18,33 @@ import { DataService } from '../shared/services/data/data.service';
 })
 export class MagicItemsPageComponent implements OnInit {
   constructor(private search: SearchService, private data: DataService){}
-  public magic_items: MagicItem[] = []
+  public cards: MagicItem[] = []
   private debounce: any = null;
+  private maxSize: number = 0;
+  public limitCount: number = 20;
 
   public loading: boolean = true;
 
   ngOnInit(){
     this.data.getMagicItems()
-    .subscribe(data => {
-      this.search.setData(data);
-      this.setShownMagicItems(this.search.getSearchResults() as MagicItem[]);
-
-      setTimeout(() => this.loading = false, 500);
-  });
+    .subscribe(data => this.initCards(data));
   }
 
-  setShownMagicItems(_data_: MagicItem[]){
-    this.magic_items = _data_;
+  initCards(data: MagicItem[]){
+    this.search.setData(data);
+    this.setShownCards(this.search.getSearchResults() as MagicItem[]);
+
+    setTimeout(() => this.loading = false, 500);
+  }
+
+  setShownCards(_data_: MagicItem[]){
+    this.cards = _data_.slice(0, this.limitCount);
+  }
+
+  addMore(){
+    this.limitCount += 25;
+    
+    this.setShownCards(this.search.getSearchResults() as MagicItem[]);
   }
 
   /**
@@ -50,6 +60,6 @@ export class MagicItemsPageComponent implements OnInit {
 
   private doFilterSearch(event: MagicItem){
     this.debounce = null;
-    this.setShownMagicItems(this.search.getSearchResults(event) as MagicItem[]);
+    this.setShownCards(this.search.getSearchResults(event) as MagicItem[]);
   }
 }

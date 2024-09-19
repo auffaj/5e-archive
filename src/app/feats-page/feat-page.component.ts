@@ -18,23 +18,33 @@ import { DataService } from '../shared/services/data/data.service';
 })
 export class FeatsPageComponent implements OnInit {
   constructor(private search: SearchService, private data: DataService){}
-  public feats: Feat[] = []
+  public cards: Feat[] = []
   private debounce: any = null;
+  private maxSize: number = 0;
+  public limitCount: number = 20;
 
   public loading: boolean = true;
   
   ngOnInit(){
     this.data.getFeats()
-        .subscribe(data => {
-          this.search.setData(data);
-          this.setShownFeats(data as Feat[]);
-          setTimeout(() => this.loading = false, 500);
-        });
-     
+        .subscribe(data => this.initCards(data));
   }
 
-  setShownFeats(_data_: Feat[]){
-    this.feats = JSON.parse(JSON.stringify(_data_));
+  initCards(data: Feat[]){
+    this.search.setData(data);
+    this.setShownCards(data as Feat[]);
+    setTimeout(() => this.loading = false, 500);
+  }
+
+  setShownCards(_data_: Feat[]){
+    this.cards = _data_.slice(0, this.limitCount);
+  }
+
+  
+  addMore(){
+    this.limitCount += 25;
+    
+    this.setShownCards(this.search.getSearchResults() as Feat[]);
   }
 
   /**
@@ -50,6 +60,6 @@ export class FeatsPageComponent implements OnInit {
   
     private doFilterSearch(event: Feat){     
       this.debounce = null;
-      this.setShownFeats(this.search.getSearchResults(event) as Feat[]);
+      this.setShownCards(this.search.getSearchResults(event) as Feat[]);
     }
 }

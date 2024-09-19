@@ -3,7 +3,7 @@
     <fiveE-archive-search-bar-spell  *ngIf="!loading" (filterSubmitted)="filterSearched($event)"></fiveE-archive-search-bar-spell>
 </div>
 
-<div class="card-container" *ngFor="let spell of spells">
+<div class="card-container" *ngFor="let spell of cards">
     <fiveE-archive-card-container
         [description]="spell.description"
         [tags]="spell.tags"

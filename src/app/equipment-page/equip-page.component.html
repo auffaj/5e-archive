@@ -3,10 +3,10 @@
     <fiveE-archive-search-bar-equip *ngIf="!loading" (filterSubmitted)="filterSearched($event)"></fiveE-archive-search-bar-equip>
 </div>
 
-<div class="card-container" *ngFor="let equip of equips">
+<div class="card-container" *ngFor="let card of cards">
     <fiveE-archive-card-container
-        [description]="equip.description"
-        [tags]="equip.footer">
-        <app-equip-card [data]="equip"></app-equip-card>
+        [description]="card.description"
+        [tags]="card.footer">
+        <app-equip-card [data]="card"></app-equip-card>
     </fiveE-archive-card-container>
 </div>
