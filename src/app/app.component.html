@@ -1,41 +1,7 @@
-<div class="body-container">
-    <mat-tab-group (selectedTabChange)="pageLoaded($event)">
-        <mat-tab></mat-tab> <!-- placeholder to force page selection -->
-        <mat-tab label="Spells">
-            <div *ngIf="wasLoaded['Spells']" class="panel-body-container">
-                <ng-scrollbar [orientation]="'vertical'">
-                    <div class="panel-body">
-                        <fiveE-archive-spells-page></fiveE-archive-spells-page>
-                    </div>
-                </ng-scrollbar>
-            </div>
-        </mat-tab>
-        <mat-tab label="Equipment">
-            <div *ngIf="wasLoaded['Equipment']" class="panel-body-container">
-                <ng-scrollbar [orientation]="'vertical'">
-                    <div class="panel-body">
-                        <fiveE-archive-equips-page></fiveE-archive-equips-page>
-                    </div>
-                </ng-scrollbar>
-            </div>
-        </mat-tab>
-        <mat-tab label="Feats">
-            <div *ngIf="wasLoaded['Feats']" class="panel-body-container">
-                <ng-scrollbar [orientation]="'vertical'">
-                    <div class="panel-body">
-                        <fiveE-archive-feats-page></fiveE-archive-feats-page>
-                    </div>
-                </ng-scrollbar>
-            </div>
-        </mat-tab>
-        <mat-tab label="Magic Items">
-            <div *ngIf="wasLoaded['Magic Items']" class="panel-body-container">
-                <ng-scrollbar [orientation]="'vertical'">
-                    <div class="panel-body">
-                        <fiveE-archive-magic-items-page></fiveE-archive-magic-items-page>
-                    </div>
-                </ng-scrollbar>
-            </div>
-        </mat-tab>
-      </mat-tab-group>
+<div class="parent-container">
+    <fiveE-archive-sidenav></fiveE-archive-sidenav>
+
+    <div class="main-window">
+        <fiveE-archive-quick-reference></fiveE-archive-quick-reference>
+    </div>
 </div>

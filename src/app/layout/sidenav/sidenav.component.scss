@@ -1,0 +1,41 @@
+@import 'variables';
+
+.sidenav-container{
+    width:50px;
+    background-color: $background;
+    border-right: 1px solid $highlight;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-button{
+    cursor: pointer;
+    width:46px;
+    height:46px;
+    margin-left:2px;
+    margin-bottom: 2px;
+    padding: 0px;
+
+    border-bottom: 1px solid rgba($highlight, 0.5);
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+
+    color: $pageBgColor;
+    background: $background;
+
+    :hover{
+        color: rgba($highlight, 0.75);
+    }
+
+    mat-icon{
+        width: 46px;
+        height:46px;
+        font-size:40px;
+    }
+    
+    .my-tooltip {
+        white-space: pre-line;
+    }
+}

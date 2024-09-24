@@ -1,25 +1,9 @@
-.body-container{
-    height: 100vh;
-    max-height: 100vh;
-    background: #0d1117;
+@import 'variables';
 
-
+.parent-container{
+    display:flex;
 }
-::ng-deep .body-container .mdc-tab--active{
-    background-color: rgba(0, 221, 221, 0.2);
+.main-window{
+    flex-grow:1;
+    height:100%;
 }
-.mat-mdc-tab-group{
-    max-height: 100%;
-}
-.panel-body-container{
-    height: 100%;
-}
-.panel-body{
-    height: 100%;
-    padding-left: 10px;
-    padding-right: 20px;
-}
-::ng-deep #mat-tab-label-0-0{
-    display: none;
-}
-
