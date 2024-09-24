@@ -4,6 +4,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDrawer } from '@angular/material/sidenav';
 import { NgIf } from '@angular/common';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 /**
  * @title Autosize sidenav
@@ -13,7 +14,7 @@ import { NgIf } from '@angular/common';
   templateUrl: './card-container.component.html',
   styleUrl: './card-container.component.scss',
   standalone: true,
-  imports: [MatSidenavModule, MatButtonModule,MatIconModule,NgIf]
+  imports: [MatSidenavModule, MatButtonModule,MatIconModule,NgIf, MatTooltipModule]
 })
 export class CardContainerComponent implements OnInit{
   @Input() description: string[] | string | null = null;
@@ -51,9 +52,9 @@ export class CardContainerComponent implements OnInit{
           _description_ = this.description.join("\n\n")
         }
                              
-        return {title: null, body: _description_};
+        return {title: "Description", body: _description_};
       case("tags"): 
-        return {title: "Tags:", body: this.tags == null ? "" : this.tags.toString()};
+        return {title: "Tags", body: this.tags == null ? "" : this.tags.toString().replace("Tags:","").trim()};
       case("sourcebook"):
         return {title: "Source Book", body: this.sourcebook == null ? "" : this.sourcebook};
       case("classes"):

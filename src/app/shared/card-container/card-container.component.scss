@@ -40,6 +40,10 @@
       flex-grow: 1;
     }
   
+    .mat-mdc-mini-fab.inactive{
+      background-color: transparent;
+      border: 1px solid var(--mdc-fab-container-color);
+    }
 }
   
   

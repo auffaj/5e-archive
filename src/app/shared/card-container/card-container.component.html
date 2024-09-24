@@ -6,31 +6,39 @@
         </div>
         <div class="button-container">
             <button *ngIf="description != null"
+                    [class]="{'inactive': currentSubject != 'description'}"
                     type="button"
                     mat-mini-fab
                     (click)="openDrawer(drawer, 'description')"
-                    title="Description">
+                    matTooltip="Description"
+                    matTooltipPosition="left">
                 <mat-icon fontIcon="description"></mat-icon>
             </button>
             <button *ngIf="tags != null"
+                    [class]="{'inactive': currentSubject != 'tags'}"
                     type="button"
                     mat-mini-fab
                     (click)="openDrawer(drawer, 'tags')"
-                    title="Tags">
+                    matTooltip="Tags"
+                    matTooltipPosition="left">
                 <mat-icon fontIcon="sell"></mat-icon>
             </button>
             <button *ngIf="sourcebook != null"
+                    [class]="{'inactive': currentSubject != 'sourcebook'}"
                     type="button"
                     mat-mini-fab
                     (click)="openDrawer(drawer, 'sourcebook')"
-                    title="Sourcebook">
+                    matTooltip="Sourcebook"
+                    matTooltipPosition="left">
                 <mat-icon fontIcon="menu_book"></mat-icon>
             </button>
             <button *ngIf="classes != null"
+                    [class]="{'inactive': currentSubject != 'classes'}"
                     type="button"
                     mat-mini-fab
                     (click)="openDrawer(drawer, 'classes')"
-                    title="Classes">
+                    matTooltip="Classes"
+                    matTooltipPosition="left">
                 <mat-icon fontIcon="switch_account"></mat-icon>
             </button>
         </div>
