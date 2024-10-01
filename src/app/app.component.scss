@@ -1,9 +1,10 @@
 @import 'variables';
 
-.parent-container{
+.app-container{
     display:flex;
+    background-color: $pageBgColor;
 }
 .main-window{
-    flex-grow:1;
+    flex:1;
     height:100%;
 }

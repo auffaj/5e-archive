@@ -1,18 +1,15 @@
 <div class="sidenav-container">
-    <button mat-fab
-            class="nav-button"
-            matTooltip="Show Tour"
+    <div *ngFor="let button of buttons">
+        <button mat-fab
+            [ngClass]="getClass(button)"
+            matTooltip="button.tooltip"
             matTooltipClass="my-tooltip"
-            matTooltipPosition="right">
-        <mat-icon>home</mat-icon>
-    </button>
-    <button mat-fab
-            class="nav-button selected"
-            matTooltip="Spells, Equipment, Feats and Magic Items"
-            matTooltipClass="my-tooltip"
-            matTooltipPosition="right">
-        <mat-icon>manage_search</mat-icon>
-    </button>
+            matTooltipPosition="right"
+            [routerLink]="button.url">
+            <mat-icon>{{button.icon}}</mat-icon>
+        </button>    
+    </div>
+<!--
     <button mat-fab
             *ngIf="false"
             class="nav-button"
@@ -37,5 +34,6 @@
             matTooltipPosition="right">
         <mat-icon>admin_panel_settings</mat-icon>
     </button>
+    -->
 </div>
 
