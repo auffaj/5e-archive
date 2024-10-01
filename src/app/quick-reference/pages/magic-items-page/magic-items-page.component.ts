@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { MagicItem } from './magic-item';
 import { CommonModule } from '@angular/common';
 import { MagicItemCardComponent } from './components/magic-item-card/magic-item-card.component';
-import { CardContainerComponent } from '../shared/card-container/card-container.component';
-import { SearchService } from '../shared/services/search/search.service';
-import { SearchBarMagicItemComponent } from '../shared/search-bar/search-bar.component';
+import { CardContainerComponent } from '../../../shared/card-container/card-container.component';
+import { SearchService } from '../../../shared/services/search/search.service';
+import { SearchBarMagicItemComponent } from '../../../shared/search-bar/search-bar.component';
 import { MatProgressBar } from '@angular/material/progress-bar';
-import { DataService } from '../shared/services/data/data.service';
+import { DataService } from '../../../shared/services/data/data.service';
 
 @Component({
   selector: 'fiveE-archive-magic-items-page',

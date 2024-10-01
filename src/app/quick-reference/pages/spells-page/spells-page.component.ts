@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Spell } from './spell';
 import { CommonModule } from '@angular/common';
 import { SpellCardComponent } from './components/spell-card/spell-card.component';
-import { CardContainerComponent } from '../shared/card-container/card-container.component';
-import { SearchBarSpellComponent } from '../shared/search-bar/search-bar.component';
-import { SearchService } from '../shared/services/search/search.service';
+import { CardContainerComponent } from '../../../shared/card-container/card-container.component';
+import { SearchBarSpellComponent } from '../../../shared/search-bar/search-bar.component';
+import { SearchService } from '../../../shared/services/search/search.service';
 import { MatProgressBar } from '@angular/material/progress-bar';
-import { DataService } from '../shared/services/data/data.service';
+import { DataService } from '../../../shared/services/data/data.service';
 
 @Component({
   selector: 'fiveE-archive-spells-page',

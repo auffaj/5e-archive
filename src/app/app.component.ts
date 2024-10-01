@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { QuickReferenceComponent } from './layout/quick-reference/quick-reference.component';
+import { QuickReferenceComponent } from './quick-reference/quick-reference.component';
 import { SidenavComponent } from './layout/sidenav/sidenav.component';
 
 @Component({

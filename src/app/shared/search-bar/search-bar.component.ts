@@ -2,10 +2,10 @@ import { Component, Directive, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatIcon } from '@angular/material/icon';
 import { MatFormField, MatInput, MatLabel, MatSuffix } from '@angular/material/input';
-import { MagicItem } from '../../magic-items-page/magic-item';
-import { Feat } from '../../feats-page/feat';
-import { Equip } from '../../equipment-page/equip';
-import { Spell } from '../../spells-page/spell';
+import { MagicItem } from '../../quick-reference/pages/magic-items-page/magic-item';
+import { Feat } from '../../quick-reference/pages/feats-page/feat';
+import { Equip } from '../../quick-reference/pages/equipment-page/equip';
+import { Spell } from '../../quick-reference/pages/spells-page/spell';
 import { NgIf } from '@angular/common';
 
 const IMPORTS = [MatInput, MatIcon, MatFormField, MatLabel, FormsModule, NgIf, MatSuffix]

@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
-import { SpellsPageComponent } from '../../spells-page/spells-page.component';
-import { EquipsPageComponent } from '../../equipment-page/equip-page.component';
-import { MagicItemsPageComponent } from '../../magic-items-page/magic-items-page.component';
-import { FeatsPageComponent } from '../../feats-page/feat-page.component';
+import { SpellsPageComponent } from './pages/spells-page/spells-page.component';
+import { EquipsPageComponent } from './pages/equipment-page/equip-page.component';
+import { MagicItemsPageComponent } from './pages/magic-items-page/magic-items-page.component';
+import { FeatsPageComponent } from './pages/feats-page/feat-page.component';
 import { MatTab, MatTabChangeEvent, MatTabContent, MatTabGroup } from '@angular/material/tabs';
 import { NgScrollbarModule} from 'ngx-scrollbar';
 
