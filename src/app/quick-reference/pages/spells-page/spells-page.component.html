@@ -12,3 +12,5 @@
         <app-spell-card [data]="spell"></app-spell-card>
     </fiveE-archive-card-container>
 </div>
+<button mat-stroked-button (click)="addMore(25)">Show 25 More</button>
+<button mat-flat-button matTooltip="Loads a lot of data, patience please" (click)="addMore()">Show All</button>

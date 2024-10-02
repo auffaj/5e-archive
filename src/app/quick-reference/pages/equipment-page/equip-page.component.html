@@ -2,7 +2,6 @@
     <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
     <fiveE-archive-search-bar-equip *ngIf="!loading" (filterSubmitted)="filterSearched($event)"></fiveE-archive-search-bar-equip>
 </div>
-
 <div class="card-container" *ngFor="let card of cards">
     <fiveE-archive-card-container
         [description]="card.description"
@@ -10,3 +9,6 @@
         <app-equip-card [data]="card"></app-equip-card>
     </fiveE-archive-card-container>
 </div>
+<button mat-stroked-button (click)="addMore(25)">Show 25 More</button>
+<button mat-flat-button matTooltip="Loads a lot of data, patience please" (click)="addMore()">Show All</button>
+

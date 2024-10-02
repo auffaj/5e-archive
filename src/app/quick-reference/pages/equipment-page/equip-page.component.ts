@@ -7,11 +7,13 @@ import { SearchBarEquipComponent } from '../../../shared/search-bar/search-bar.c
 import { SearchService } from '../../../shared/services/search/search.service';
 import { MatProgressBar } from '@angular/material/progress-bar';
 import { DataService } from '../../../shared/services/data/data.service';
+import { MatButton } from '@angular/material/button';
+import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
   selector: 'fiveE-archive-equips-page',
   standalone: true,
-  imports: [CommonModule, EquipCardComponent,CardContainerComponent, SearchBarEquipComponent, MatProgressBar],
+  imports: [CommonModule, EquipCardComponent,CardContainerComponent, SearchBarEquipComponent, MatProgressBar, MatButton, MatTooltip],
   providers:[DataService],
   templateUrl: './equip-page.component.html',
   styleUrl: './equip-page.component.scss'
@@ -22,10 +24,11 @@ export class EquipsPageComponent implements OnInit {
 
   public loading: boolean = true;
 
-  private maxSize: number = 0;
   public limitCount: number = 20;
 
   private debounce: any = null;
+
+  private filter: any = null;
 
   ngOnInit(){
     this.data
@@ -43,10 +46,17 @@ export class EquipsPageComponent implements OnInit {
     this.cards = _data_.slice(0, this.limitCount);
   }
 
-  addMore(){
-    this.limitCount += 25;
-    
-    this.setShownCards(this.search.getSearchResults() as Equip[]);
+  addMore(amountToAdd: number | null = null){
+
+    const myData: Equip[] = this.search.getSearchResults(this.filter) as Equip[];
+
+    this.limitCount = amountToAdd  == null ?  myData.length : this.limitCount + amountToAdd;
+        
+    myData.slice(0, this.limitCount).forEach(equip => {
+      if(this.cards.find(card => card.name == equip.name) == undefined){
+        this.cards.push(equip)
+      }
+    })
   }
 
   filterSearched(event: Equip){
@@ -59,6 +69,7 @@ export class EquipsPageComponent implements OnInit {
 
   private doFilterSearch(event: Equip){
     this.debounce = null;
+    this.filter = event;  
     this.setShownCards(this.search.getSearchResults(event) as Equip[]);
   }
 }

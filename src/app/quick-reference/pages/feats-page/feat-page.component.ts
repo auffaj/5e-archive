@@ -7,11 +7,13 @@ import { SearchBarFeatComponent } from '../../../shared/search-bar/search-bar.co
 import { SearchService } from '../../../shared/services/search/search.service';
 import { MatProgressBar } from '@angular/material/progress-bar';
 import { DataService } from '../../../shared/services/data/data.service';
+import { MatButton } from '@angular/material/button';
+import { MatTooltip } from '@angular/material/tooltip';
 
 @Component({
   selector: 'fiveE-archive-feats-page',
   standalone: true,
-  imports: [CommonModule, FeatCardComponent, CardContainerComponent, SearchBarFeatComponent, MatProgressBar],
+  imports: [CommonModule, FeatCardComponent, CardContainerComponent, SearchBarFeatComponent, MatProgressBar, MatButton, MatTooltip],
   providers:[DataService],
   templateUrl: './feat-page.component.html',
   styleUrl: './feat-page.component.scss'
@@ -20,10 +22,12 @@ export class FeatsPageComponent implements OnInit {
   constructor(private search: SearchService, private data: DataService){}
   public cards: Feat[] = []
   private debounce: any = null;
-  private maxSize: number = 0;
+  
   public limitCount: number = 20;
 
   public loading: boolean = true;
+
+  private filter: any;
   
   ngOnInit(){
     this.data.getFeats()
@@ -41,10 +45,16 @@ export class FeatsPageComponent implements OnInit {
   }
 
   
-  addMore(){
-    this.limitCount += 25;
+  addMore(amountToAdd: number | null = null){
+    const myData: Feat[] = this.search.getSearchResults(this.filter) as Feat[];
+
+    this.limitCount = amountToAdd  == null ?  myData.length : this.limitCount + amountToAdd;
     
-    this.setShownCards(this.search.getSearchResults() as Feat[]);
+    myData.slice(0, this.limitCount).forEach(feat => {
+      if(this.cards.find(card => card.name == feat.name) == undefined){
+        this.cards.push(feat)
+      }
+    })
   }
 
   /**
@@ -60,6 +70,7 @@ export class FeatsPageComponent implements OnInit {
   
     private doFilterSearch(event: Feat){     
       this.debounce = null;
+      this.filter = event;
       this.setShownCards(this.search.getSearchResults(event) as Feat[]);
     }
 }

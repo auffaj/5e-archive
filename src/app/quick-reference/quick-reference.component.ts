@@ -33,9 +33,6 @@ export class QuickReferenceComponent {
   }
 
   pageLoaded(event: MatTabChangeEvent){
-    console.log(event.tab.textLabel);
-
     this.wasLoaded[event.tab.textLabel] = true;
-    console.log(this.wasLoaded);
   }
 }
