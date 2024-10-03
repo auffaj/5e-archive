@@ -1,0 +1,30 @@
+@import 'variables';
+
+.equip-container{
+    display: flex;
+    flex-direction: column;
+    height: 100%
+}
+
+.equip-header{
+    max-height: 80px;
+}
+.equip-footer{
+    height: 50px;
+    display: flex;
+    justify-content:start;
+
+    p{
+        color: cyan;
+        padding-left: 15px;
+        padding-top: 10px;
+    }
+}
+.equip-body{
+    max-height: calc(100vh - (50px + 80px + 50px));  //header + searchbar + footer
+}
+.card-container{
+    height: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+}

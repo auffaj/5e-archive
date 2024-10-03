@@ -1,14 +1,26 @@
-<div>
-    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
-    <fiveE-archive-search-bar-equip *ngIf="!loading" (filterSubmitted)="filterSearched($event)"></fiveE-archive-search-bar-equip>
+<div class="equip-container">
+    <div class="equip-header">
+        <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+        <fiveE-archive-search-bar-equip *ngIf="!loading" (filterSubmitted)="filterSearched($event)"></fiveE-archive-search-bar-equip>
+    </div>
+    <div class="equip-body">
+        <ng-scrollbar [orientation]="'vertical'">
+            <div class="card-container">
+                <div *ngFor="let card of cards">
+                    <fiveE-archive-card-container
+                        [description]="card.description"
+                        [tags]="card.footer">
+                        <app-equip-card [data]="card"></app-equip-card>
+                    </fiveE-archive-card-container>
+                </div>
+            </div>
+        </ng-scrollbar>
+    </div>
+    <div *ngIf="!loading" class="equip-footer">
+        <button mat-stroked-button (click)="addMore(addMoreCount)">Show {{addMoreCount}} More</button>
+        <button mat-flat-button matTooltip="Loads a lot of data, patience please" (click)="addMore()">Show All</button>
+        <p>Showing {{cards.length}}/{{totalItems}} (unfiltered)</p>
+    </div>
 </div>
-<div class="card-container" *ngFor="let card of cards">
-    <fiveE-archive-card-container
-        [description]="card.description"
-        [tags]="card.footer">
-        <app-equip-card [data]="card"></app-equip-card>
-    </fiveE-archive-card-container>
-</div>
-<button mat-stroked-button (click)="addMore(25)">Show 25 More</button>
-<button mat-flat-button matTooltip="Loads a lot of data, patience please" (click)="addMore()">Show All</button>
+
 

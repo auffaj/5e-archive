@@ -23,9 +23,8 @@ export class MagicItemsPageComponent implements OnInit {
   public cards: MagicItem[] = []
   private debounce: any = null;
   public limitCount: number = 20;
-
   private filter: any;
-
+  public totalItems: number = 0;
   public loading: boolean = true;
 
   ngOnInit(){

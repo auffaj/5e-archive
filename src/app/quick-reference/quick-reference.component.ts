@@ -5,16 +5,14 @@ import { EquipsPageComponent } from './pages/equipment-page/equip-page.component
 import { MagicItemsPageComponent } from './pages/magic-items-page/magic-items-page.component';
 import { FeatsPageComponent } from './pages/feats-page/feat-page.component';
 import { MatTab, MatTabChangeEvent, MatTabContent, MatTabGroup } from '@angular/material/tabs';
-import { NgScrollbarModule} from 'ngx-scrollbar';
 
 @Component({
   selector: 'fiveE-archive-quick-reference',
   standalone: true,
   imports: [CommonModule,
-    MatTab,
+            MatTab,
             MatTabGroup,
             MatTabContent,
-            NgScrollbarModule,
             
             SpellsPageComponent,
             MagicItemsPageComponent,

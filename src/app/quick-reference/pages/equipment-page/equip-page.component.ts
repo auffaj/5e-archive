@@ -9,11 +9,22 @@ import { MatProgressBar } from '@angular/material/progress-bar';
 import { DataService } from '../../../shared/services/data/data.service';
 import { MatButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
+import { NgScrollbarModule } from 'ngx-scrollbar';
+
+const IMPORTS = [CommonModule,
+                 EquipCardComponent,
+                 CardContainerComponent,
+                 SearchBarEquipComponent,
+                 MatProgressBar,
+                 MatButton,
+                 MatTooltip,
+                 NgScrollbarModule
+                ];
 
 @Component({
   selector: 'fiveE-archive-equips-page',
   standalone: true,
-  imports: [CommonModule, EquipCardComponent,CardContainerComponent, SearchBarEquipComponent, MatProgressBar, MatButton, MatTooltip],
+  imports: IMPORTS,
   providers:[DataService],
   templateUrl: './equip-page.component.html',
   styleUrl: './equip-page.component.scss'
@@ -21,13 +32,11 @@ import { MatTooltip } from '@angular/material/tooltip';
 export class EquipsPageComponent implements OnInit {
   constructor(private search: SearchService, private data: DataService){}
   public cards: Equip[] = []
-
   public loading: boolean = true;
-
-  public limitCount: number = 20;
-
+  public totalItems: number = 0;
+  public addMoreCount: number = 25;
+  public limitCount: number = 25;
   private debounce: any = null;
-
   private filter: any = null;
 
   ngOnInit(){
@@ -39,6 +48,7 @@ export class EquipsPageComponent implements OnInit {
   initCards(_data_: Equip[]){
     this.search.setData(_data_);
     this.setShownCards(_data_);
+    this.totalItems = _data_.length;
     setTimeout(() => this.loading = false, 500);
   }
 

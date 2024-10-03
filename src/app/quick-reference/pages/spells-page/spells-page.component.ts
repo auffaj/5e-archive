@@ -23,7 +23,7 @@ export class SpellsPageComponent implements OnInit {
   public cards: Spell[] = []
   private debounce: any = null;
   public limitCount: number = 20;
-
+  public totalItems: number = 0;
   public loading: boolean = true;
   private filter: any;
 

@@ -22,9 +22,8 @@ export class FeatsPageComponent implements OnInit {
   constructor(private search: SearchService, private data: DataService){}
   public cards: Feat[] = []
   private debounce: any = null;
-  
   public limitCount: number = 20;
-
+  public totalItems: number = 0;
   public loading: boolean = true;
 
   private filter: any;
