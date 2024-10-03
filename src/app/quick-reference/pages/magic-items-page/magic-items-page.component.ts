@@ -9,11 +9,21 @@ import { MatProgressBar } from '@angular/material/progress-bar';
 import { DataService } from '../../../shared/services/data/data.service';
 import { MatButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
+import { NgScrollbarModule } from 'ngx-scrollbar';
+
+const IMPORTS = [CommonModule,
+                 MagicItemCardComponent,
+                 CardContainerComponent,
+                 SearchBarMagicItemComponent,
+                 MatProgressBar,
+                 MatButton,
+                 MatTooltip,
+                 NgScrollbarModule]
 
 @Component({
   selector: 'fiveE-archive-magic-items-page',
   standalone: true,
-  imports: [CommonModule, MagicItemCardComponent, CardContainerComponent, SearchBarMagicItemComponent, MatProgressBar, MatButton, MatTooltip],
+  imports: IMPORTS,
   providers:[DataService],
   templateUrl: './magic-items-page.component.html',
   styleUrl:    './magic-items-page.component.scss'

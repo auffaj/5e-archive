@@ -9,11 +9,21 @@ import { MatProgressBar } from '@angular/material/progress-bar';
 import { DataService } from '../../../shared/services/data/data.service';
 import { MatButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
+import { NgScrollbarModule } from 'ngx-scrollbar';
+
+const IMPORTS = [CommonModule,
+                 SpellCardComponent,
+                 CardContainerComponent,
+                 SearchBarSpellComponent,
+                 MatProgressBar,
+                 MatButton,
+                 MatTooltip,
+                 NgScrollbarModule]
 
 @Component({
   selector: 'fiveE-archive-spells-page',
   standalone: true,
-  imports: [CommonModule, SpellCardComponent, CardContainerComponent, SearchBarSpellComponent, MatProgressBar, MatButton, MatTooltip],
+  imports: IMPORTS,
   providers:[DataService],
   templateUrl: './spells-page.component.html',
   styleUrl: './spells-page.component.scss'

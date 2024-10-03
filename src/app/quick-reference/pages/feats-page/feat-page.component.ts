@@ -9,11 +9,21 @@ import { MatProgressBar } from '@angular/material/progress-bar';
 import { DataService } from '../../../shared/services/data/data.service';
 import { MatButton } from '@angular/material/button';
 import { MatTooltip } from '@angular/material/tooltip';
+import { NgScrollbarModule } from 'ngx-scrollbar';
+
+const IMPORTS = [CommonModule,
+                 FeatCardComponent,
+                 CardContainerComponent,
+                 SearchBarFeatComponent,
+                 MatProgressBar,
+                 MatButton,
+                 MatTooltip,
+                 NgScrollbarModule]
 
 @Component({
   selector: 'fiveE-archive-feats-page',
   standalone: true,
-  imports: [CommonModule, FeatCardComponent, CardContainerComponent, SearchBarFeatComponent, MatProgressBar, MatButton, MatTooltip],
+  imports: IMPORTS,
   providers:[DataService],
   templateUrl: './feat-page.component.html',
   styleUrl: './feat-page.component.scss'
