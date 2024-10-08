@@ -1,0 +1,33 @@
+@import 'variables';
+
+.page-container{
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 50px);
+}
+
+.page-header{
+    max-height: 80px;
+}
+.page-footer{
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: 50px;
+    display: flex;
+    justify-content:start;
+
+    p{
+        color: cyan;
+        padding-left: 15px;
+        padding-top: 10px;
+    }
+}
+.page-body{
+    flex-grow: 1;
+    max-height: calc(100vh - (50px + 80px + 50px));  //header + searchbar + footer
+}
+.card-container{
+    height: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+}
