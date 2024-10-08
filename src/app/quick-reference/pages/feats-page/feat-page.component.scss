@@ -23,8 +23,10 @@
     }
 }
 .page-body{
-    flex-grow: 1;
+    flex-grow: 0;
     max-height: calc(100vh - (50px + 80px + 50px));  //header + searchbar + footer
+    height: calc(100vh - (50px + 80px + 50px));
+    overflow-y: scroll;
 }
 .card-container{
     height: 100%;

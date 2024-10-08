@@ -1,15 +1,21 @@
-<div class="search-container">
-    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
-    <fiveE-archive-search-bar-magic-item *ngIf="!loading" (filterSubmitted)="filterSearched($event)"></fiveE-archive-search-bar-magic-item>
+<div class="page-container">
+    <div class="page-header">
+        <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+        <fiveE-archive-search-bar-magic-item *ngIf="!loading" (filterSubmitted)="filterSearched($event)"></fiveE-archive-search-bar-magic-item>
+    </div>
+    <div class="page-body">
+        <div *ngFor="let card of cards">
+            <fiveE-archive-card-container
+                [description]="[card.upperDescription, card.mainDescription, card.lowerDescription]"
+                [tags]="card.footerTags"
+                [sourcebook]="card.sourcebook">
+                 <app-magic-item-card [data]="card"></app-magic-item-card>
+             </fiveE-archive-card-container>
+        </div>
+    </div>
+    <div *ngIf="!loading" class="page-footer">
+        <button mat-stroked-button (click)="addMore(addMoreCount)">Show {{addMoreCount}} More</button>
+        <button mat-flat-button matTooltip="Loads a lot of data, patience please" (click)="addMore()">Show All</button>
+        <p>Showing {{cards.length}}/{{totalItems}} (unfiltered)</p>
+    </div>
 </div>
-
-<div class="card-container" *ngFor="let magic_item of cards">
-    <fiveE-archive-card-container
-        [description]="[magic_item.upperDescription, magic_item.mainDescription, magic_item.lowerDescription]"
-        [tags]="magic_item.footerTags"
-        [sourcebook]="magic_item.sourcebook">
-        <app-magic-item-card [data]="magic_item"></app-magic-item-card>
-    </fiveE-archive-card-container>
-</div>
-<button mat-stroked-button (click)="addMore(25)">Show 25 More</button>
-<button mat-flat-button matTooltip="Loads a lot of data, patience please" (click)="addMore()">Show All</button>

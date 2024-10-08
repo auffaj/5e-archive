@@ -1,15 +1,21 @@
-<div>
-    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
-    <fiveE-archive-search-bar-feat *ngIf="!loading" (filterSubmitted)="filterSearched($event)"></fiveE-archive-search-bar-feat>
+<div class="page-container">
+    <div class="page-header">
+        <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+        <fiveE-archive-search-bar-feat *ngIf="!loading" (filterSubmitted)="filterSearched($event)"></fiveE-archive-search-bar-feat>
+    </div>
+    <div class="page-body">
+        <div *ngFor="let card of cards">
+            <fiveE-archive-card-container
+                [description]="card.description"
+                [tags]="card.tags"
+                [sourcebook]="card.sourcebook">
+                <fiveE-archive-feat-card [data]="card"></fiveE-archive-feat-card>
+            </fiveE-archive-card-container>
+        </div>
+    </div>
+    <div *ngIf="!loading" class="page-footer">
+        <button mat-stroked-button (click)="addMore(addMoreCount)">Show {{addMoreCount}} More</button>
+        <button mat-flat-button matTooltip="Loads a lot of data, patience please" (click)="addMore()">Show All</button>
+        <p>Showing {{cards.length}}/{{totalItems}} (unfiltered)</p>
+    </div>
 </div>
-
-<div class="card-container" *ngFor="let feat of cards">
-    <fiveE-archive-card-container
-        [description]="feat.description"
-        [tags]="feat.tags"
-        [sourcebook]="feat.sourcebook">
-        <fiveE-archive-feat-card [data]="feat"></fiveE-archive-feat-card>
-    </fiveE-archive-card-container>
-</div>
-<button mat-stroked-button (click)="addMore(25)">Show 25 More</button>
-<button mat-flat-button matTooltip="Loads a lot of data, patience please" (click)="addMore()">Show All</button>

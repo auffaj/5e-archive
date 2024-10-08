@@ -4,14 +4,12 @@
         <fiveE-archive-search-bar-equip *ngIf="!loading" (filterSubmitted)="filterSearched($event)"></fiveE-archive-search-bar-equip>
     </div>
     <div class="page-body">
-        <div class="card-container">
-            <div *ngFor="let card of cards">
-                <fiveE-archive-card-container
-                    [description]="card.description"
-                    [tags]="card.footer">
-                    <app-equip-card [data]="card"></app-equip-card>
-                </fiveE-archive-card-container>
-            </div>
+        <div *ngFor="let card of cards">
+            <fiveE-archive-card-container
+                [description]="card.description"
+                [tags]="card.footer">
+                <app-equip-card [data]="card"></app-equip-card>
+            </fiveE-archive-card-container>
         </div>
     </div>
     <div *ngIf="!loading" class="page-footer">

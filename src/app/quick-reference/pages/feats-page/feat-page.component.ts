@@ -31,21 +31,22 @@ const IMPORTS = [CommonModule,
 export class FeatsPageComponent implements OnInit {
   constructor(private search: SearchService, private data: DataService){}
   public cards: Feat[] = []
-  private debounce: any = null;
-  public limitCount: number = 20;
-  public totalItems: number = 0;
   public loading: boolean = true;
-
-  private filter: any;
+  public totalItems: number = 0;
+  public addMoreCount: number = 25;
+  public limitCount: number = 25;
+  private debounce: any = null;
+  private filter: any = null;
   
   ngOnInit(){
     this.data.getFeats()
         .subscribe(data => this.initCards(data));
   }
 
-  initCards(data: Feat[]){
-    this.search.setData(data);
-    this.setShownCards(data as Feat[]);
+  initCards(_data_: Feat[]){
+    this.search.setData(_data_);
+    this.setShownCards(_data_);
+    this.totalItems = _data_.length;
     setTimeout(() => this.loading = false, 500);
   }
 

@@ -31,21 +31,22 @@ const IMPORTS = [CommonModule,
 export class SpellsPageComponent implements OnInit {
   constructor(private search: SearchService, private data: DataService){}
   public cards: Spell[] = []
-  private debounce: any = null;
-  public limitCount: number = 20;
-  public totalItems: number = 0;
   public loading: boolean = true;
-  private filter: any;
+  public totalItems: number = 0;
+  public addMoreCount: number = 25;
+  public limitCount: number = 25;
+  private debounce: any = null;
+  private filter: any = null;
 
   ngOnInit(){
     this.data.getSpells()
         .subscribe(data => this.initCards(data));
   }
 
-  initCards(data: Spell[]){
-    this.search.setData(data);
-    this.setShownCards(data);
-
+  initCards(_data_: Spell[]){
+    this.search.setData(_data_);
+    this.setShownCards(_data_);
+    this.totalItems = _data_.length;
     setTimeout(() => this.loading = false, 500);
   }
 

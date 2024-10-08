@@ -31,21 +31,22 @@ const IMPORTS = [CommonModule,
 export class MagicItemsPageComponent implements OnInit {
   constructor(private search: SearchService, private data: DataService){}
   public cards: MagicItem[] = []
-  private debounce: any = null;
-  public limitCount: number = 20;
-  private filter: any;
-  public totalItems: number = 0;
   public loading: boolean = true;
+  public totalItems: number = 0;
+  public addMoreCount: number = 25;
+  public limitCount: number = 25;
+  private debounce: any = null;
+  private filter: any = null;
 
   ngOnInit(){
     this.data.getMagicItems()
     .subscribe(data => this.initCards(data));
   }
 
-  initCards(data: MagicItem[]){
-    this.search.setData(data);
-    this.setShownCards(this.search.getSearchResults() as MagicItem[]);
-
+  initCards(_data_: MagicItem[]){
+    this.search.setData(_data_);
+    this.setShownCards(_data_);
+    this.totalItems = _data_.length;
     setTimeout(() => this.loading = false, 500);
   }
 
