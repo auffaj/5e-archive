@@ -25,7 +25,7 @@ const IMPORTS = [CommonModule,
   selector: 'fiveE-archive-equips-page',
   standalone: true,
   imports: IMPORTS,
-  providers:[DataService],
+  providers:[DataService, SearchService],
   templateUrl: './equip-page.component.html',
   styleUrl: './equip-page.component.scss'
 })

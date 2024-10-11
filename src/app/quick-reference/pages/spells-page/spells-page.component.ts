@@ -24,7 +24,7 @@ const IMPORTS = [CommonModule,
   selector: 'fiveE-archive-spells-page',
   standalone: true,
   imports: IMPORTS,
-  providers:[DataService],
+  providers:[DataService, SearchService],
   templateUrl: './spells-page.component.html',
   styleUrl: './spells-page.component.scss'
 })

@@ -24,7 +24,7 @@ const IMPORTS = [CommonModule,
   selector: 'fiveE-archive-magic-items-page',
   standalone: true,
   imports: IMPORTS,
-  providers:[DataService],
+  providers:[DataService, SearchService],
   templateUrl: './magic-items-page.component.html',
   styleUrl:    './magic-items-page.component.scss'
 })
