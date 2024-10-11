@@ -7,7 +7,8 @@
 }
 
 .page-header{
-    max-height: 80px;
+    max-height: 78px;
+    height: 78px;
 }
 .page-footer{
     flex-grow: 0;
@@ -19,7 +20,11 @@
     p{
         color: cyan;
         padding-left: 15px;
-        padding-top: 10px;
+        padding-top: 17px;
+    }
+
+    button {
+        margin-top: 8px;
     }
 }
 .page-body{

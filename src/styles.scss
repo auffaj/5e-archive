@@ -12,11 +12,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     }
 
     --mat-sidenav-container-background-color: $background;
-
-    --scrollbar-border-radius: 3px;
-    --scrollbar-thickness: 10;
-    --scrollbar-track-color: rgba($highlight, 0.5);
-    --scrollbar-thumb-color: $highlight;
-
     --card-min-height: 200px;
+
+    scrollbar-color: rgba($highlight, 0.5) rgba($highlight, 0.2) !important;
+    scrollbar-width: thin !important;
 }
